@@ -1,0 +1,491 @@
+@import "material-symbols";
+
+@font-face {
+    font-family: "Santiago";
+    src: url("/fonts/Santiago.otf");
+}
+
+:root {
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body {
+    height: 100%;
+    overflow-x: hidden;
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+#__next {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-width: 100vw;
+    min-height: 100vh;
+}
+
+.Btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border: 1px solid #fff;
+    border-radius: 1rem;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(2px);
+    color: #fff;
+    font-size: 1rem;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.Btn:focus-visible,
+.Btn:hover {
+    background-color: #fff;
+    color: #000;
+    transform: scale(1.05);
+}
+
+.Content_Viewer {
+    position: relative;
+}
+
+.Menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    background-color: #0000001f;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    z-index: 1;
+}
+
+.Menu_Title {
+    color: #fff;
+}
+
+.Navbar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.Nav_Logo {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    font-family: "Santiago", sans-serif;
+    transition: all 0.3s ease-in-out;
+}
+
+.Nav_Logo:focus-visible,
+.Nav_Logo:hover {
+    transform: scale(1.05);
+}
+
+.Nav_Logo:focus-visible > .Nav_Logo_Img,
+.Nav_Logo:hover > .Nav_Logo_Img {
+    transform: rotateY(360deg) scale(1.05);
+}
+
+.Nav_Logo_Img {
+    margin-left: -1rem;
+    transition: all 0.5s ease-in-out;
+}
+
+.Nav_Logo_Title {
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.Nav_Logo_Subtitle {
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.Main_Nav_Links {
+    display: flex;
+    flex: 2;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    gap: 1rem;
+}
+
+.Nav_Link {
+    position: relative;
+    font-family: "Santiago";
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.Nav_Tool::before,
+.Nav_Link::before {
+    position: absolute;
+    content: "";
+    bottom: -0.5rem;
+
+    width: 100%;
+    height: 0.25rem;
+
+    transform-origin: left;
+    transform: scaleX(0);
+
+    background-color: #00000080;
+    transition: all 0.3s ease-in-out;
+}
+
+.Nav_Tool:focus-visible::before,
+.Nav_Tool:hover::before,
+.Nav_Link:focus-visible::before,
+.Nav_Link:hover::before {
+    transform: scaleX(1);
+}
+
+.Nav_Link:focus-visible,
+.Nav_Link:hover {
+    font-size: 1.2rem;
+}
+
+.Nav_Tool:focus-visible > *,
+.Nav_Tool:hover > * {
+    font-size: 2rem;
+}
+
+.Main_Nav_Tools {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: flex-end;
+    list-style: none;
+    gap: 1rem;
+}
+
+.Mobile_Nav_Tools {
+    display: none;
+}
+
+.Nav_Tool {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+.Nav_Tool > * {
+    font-size: 1.5rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.Menu_Btn_Container {
+    display: flex;
+    align-items: center;
+}
+
+main {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.Main_Loja {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 1rem;
+
+    overflow-y: auto;
+}
+
+.Product_Card {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid #000;
+    border-radius: 1rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.Product_Card_Title {
+    font-size: clamp(3rem, 10vw, 10rem);
+    font-family: "Santiago", sans-serif;
+    color: #fff;
+}
+
+.Product_Card_Content {
+    display: flex;
+    flex: 1;
+    color: #fff;
+}
+
+.Product_Card_Intro {
+    font-size: clamp(1rem, 2vw, 2rem);
+    font-weight: 600;
+    max-width: 800px;
+}
+
+.Product_Card_Price {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border: 1px solid #fff;
+    border-radius: 1rem;
+    backdrop-filter: blur(5px);
+    font-size: 0.8rem;
+}
+
+.priceTag {
+    font-size: 1.2rem;
+    margin-left: 0.25rem;
+}
+
+.Product_Card_Visibility_Btn {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+}
+
+.Product_Card_Image_Container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 1rem;
+    z-index: -1;
+}
+
+.Image_Container_Gradient {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 50%;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+    z-index: 1;
+}
+
+.Product_Card_Image_Container > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.Product_Card_Footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1) rotate(-10deg);
+    }
+
+    100% {
+        transform: scale(1.2) rotate(10deg);
+    }
+}
+
+.Image_Home {
+    transition: all 0.3s ease-in-out;
+    animation: pulse 6s ease-in-out infinite alternate;
+}
+
+.Footer {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.Footer_PrivacyAndTerms {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 1rem;
+    margin-right: auto;
+}
+
+.Footer_Social_Media {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    flex: 1;
+}
+
+.Social_Media_Container {
+    display: flex;
+    align-items: center;
+    height: 2rem;
+    list-style: none;
+    text-decoration: none;
+}
+
+.Social_Media_Link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.Icon_Label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 0;
+    max-width: max-content;
+    white-space: nowrap;
+    border: 1px solid #000;
+    border-radius: 1rem;
+    transform: scaleX(0);
+    transform-origin: left center;
+    font-size: 1rem !important;
+
+    transition: all 0.3s ease-in-out;
+}
+
+.Origin_Right {
+    transform-origin: right center;
+}
+
+.Icon.active > .Icon_Label,
+.Icon:focus > .Icon_Label,
+.Icon:hover > .Icon_Label {
+    transform: scaleX(1);
+    width: 12rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.Icon.active > .Icon_Label {
+    background-color: aquamarine;
+}
+
+.FA_Icons {
+    height: 20px !important;
+}
+
+.Not_Found_Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+@media screen and (max-width: 1000px) {
+    .Desktop_Only {
+        display: none;
+    }
+
+    .Navbar {
+        flex-direction: column;
+    }
+
+    .Desktop_Nav_Tools {
+        display: none;
+    }
+
+    .Mobile_Nav_Tools {
+        display: flex;
+    }
+
+    .Main_Nav_Tools {
+        justify-content: space-evenly;
+    }
+
+    .Nav_Logo_Title {
+        font-size: 1.5rem;
+    }
+
+    .Main_Nav_Links {
+        display: none;
+    }
+
+    .Footer {
+        gap: 0;
+        height: 4rem;
+    }
+
+    .Footer_PrivacyAndTerms {
+        display: none;
+    }
+
+    .Footer_Brand {
+        display: none;
+    }
+
+    .Footer_Social_Media {
+        display: none;
+    }
+
+    .Icon_Label {
+        font-size: 0.8rem !important;
+    }
+}
+
+@media screen and (min-width: 2560px) {
+    :root {
+        font-size: 2rem;
+    }
+
+    .Google_Material_Icons {
+        font-size: 1.5rem;
+    }
+
+    .FA_Icons {
+        height: 40px !important;
+    }
+
+    .Nav_Logo_Img {
+        height: 200px;
+        width: 200px;
+    }
+}
