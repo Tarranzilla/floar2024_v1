@@ -4,6 +4,9 @@ const nextConfig = {
     env: {
         NEXTAUTH_SECRET: "dG91Y2hvY2N1cmV4Y2xhaW1lZHN0YWdlc3F1YXJlZ2FpbnBoeXNpY2FsYnJva2Vuc2g=",
     },
+    images: {
+        domains: ["lh3.googleusercontent.com"],
+    },
 };
 
 const prod = process.env.NODE_ENV === "production";

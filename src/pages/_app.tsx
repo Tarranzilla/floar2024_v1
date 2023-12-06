@@ -36,7 +36,7 @@ export default function App({ Component, pageProps, session }: MyAppProps) {
     return (
         <SessionProvider session={session}>
             <Provider store={store}>
-                <AnimatePresence mode="popLayout">
+                <AnimatePresence mode="sync">
                     <Navbar key={"Navbar_Master"} />
                     <main className="Content_Viewer" key="Main_Content_Viewer">
                         <Cookies key={"Cookies_Master"} />
