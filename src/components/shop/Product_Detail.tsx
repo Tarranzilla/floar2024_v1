@@ -33,17 +33,13 @@ const Product_Detail = ({ item }: { item: RoupaFloar }) => {
             </div>
 
             {!imageFocus && (
-                <>
+                <div className="Product_Detail_Information">
                     <h2 className="Product_Card_Title Title">{item.fields.name}</h2>
                     <div className="Product_Card_Content Content">
                         <CTFL_RichText document={item.fields.description} />
                     </div>
                     <p className="Dark_Pill">Feita sob medida</p>
-                </>
-            )}
 
-            {!imageFocus && (
-                <>
                     <m.h3 variants={basicFade} initial="hidden" animate="visible" exit="hidden" className="Product_Card_Price">
                         R$<span className="priceTag">{item.fields.price},00</span>
                     </m.h3>
@@ -54,7 +50,7 @@ const Product_Detail = ({ item }: { item: RoupaFloar }) => {
                             Voltar para Loja
                         </Link>
                     </m.div>
-                </>
+                </div>
             )}
 
             {imageFocus && (
