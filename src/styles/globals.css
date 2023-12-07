@@ -440,10 +440,11 @@ main {
     border: 1px solid #000;
     border-radius: 1rem;
     transition: all 0.3s ease-in-out;
+    scroll-behavior: smooth;
 }
 
 .Product_Card_Title {
-    font-size: clamp(3rem, 6vw, 5rem);
+    font-size: clamp(2.4rem, 6vw, 5rem);
     font-family: "Santiago", sans-serif;
     color: #fff;
 }
@@ -461,7 +462,7 @@ main {
 }
 
 .Product_Card_Price {
-    color: #fff;
+    color: #fff !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -470,6 +471,7 @@ main {
     border-radius: 1rem;
     backdrop-filter: blur(5px);
     font-size: 0.8rem;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .priceTag {
@@ -481,6 +483,7 @@ main {
     position: absolute;
     bottom: 1rem;
     right: 1rem;
+    color: #fff;
 }
 
 .Product_Card_Image_Container {
@@ -514,10 +517,65 @@ main {
     object-fit: cover;
 }
 
+.CLTF_Image_Loader {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+}
+
+.CLTF_Image {
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.fade-in {
+    opacity: 1;
+}
+
+.Loading_Icon {
+    font-size: 3rem;
+    animation: pulse 6s ease-in-out infinite alternate;
+}
+
 .Product_Card_Footer {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+}
+
+.Product_Detail {
+    justify-content: flex-start;
+    overflow-y: auto;
+}
+
+.Product_Detail > .Title,
+.Product_Detail > .Content {
+    color: #000;
+}
+
+.Product_Detail_Image_Container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    min-height: 40vh;
+    flex: 2;
+    gap: 1rem;
+    overflow-x: auto;
+}
+
+.Product_Detail_Image_Container > img {
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
 }
 
 a {
