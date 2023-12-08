@@ -6,8 +6,8 @@
 }
 
 ::-webkit-scrollbar {
-    width: 1rem;
-    height: 1rem;
+    width: 10px;
+    height: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -295,11 +295,15 @@ main {
     justify-content: center;
     align-items: center;
     padding: 1rem;
-    overflow-y: auto;
+    overflow: hidden;
 }
 
 .Main_Title {
     font-family: "Santiago", sans-serif;
+}
+
+.Main_Home {
+    overflow: hidden;
 }
 
 .Main_Contato {

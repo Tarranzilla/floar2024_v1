@@ -58,7 +58,7 @@ export default function Loja({ roupaFloar }: LojaProps) {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            className="Main_Loja"
+            className={"Main_Loja"}
             key="Loja"
             onMouseDown={onMouseDown}
             onMouseLeave={onMouseLeave}
