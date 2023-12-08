@@ -3,7 +3,7 @@ import { basicFade } from "@/lib/animations";
 
 import { useMediaQuery } from "react-responsive";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, createRef } from "react";
 
 import Link from "next/link";
 
@@ -20,24 +20,40 @@ interface LojaProps {
 
 export default function Loja({ roupaFloar }: LojaProps) {
     const ref = useRef<HTMLDivElement>(null);
+    const [buttonRefs, setButtonRefs] = useState<HTMLButtonElement[]>([]);
+
+    const addButtonRef = (ref: HTMLButtonElement | null) => {
+        if (ref && !buttonRefs.includes(ref)) {
+            setButtonRefs((prevRefs) => [...prevRefs, ref]);
+        }
+    };
+
+    const [buttonClicked, setButtonClicked] = useState(false);
     const [isDown, setIsDown] = useState(false);
+    const [shouldShrink, setShouldShrink] = useState(false);
     const [startX, setStartX] = useState(0);
     const [scrollLeft, setScrollLeft] = useState(0);
     const isDesktop = useMediaQuery({ query: "(min-width: 1000px)" });
 
     const onMouseDown = (e: any) => {
-        if (!isDesktop || !ref.current) return;
+        if (!isDesktop || !ref.current || buttonRefs.some((buttonRef) => buttonRef.contains(e.target))) return;
         setIsDown(true);
         setStartX(e.pageX - ref.current.offsetLeft);
         setScrollLeft(ref.current.scrollLeft);
+
+        setTimeout(() => {
+            setShouldShrink(!shouldShrink); // Toggle shouldShrink
+        }, 250);
     };
 
     const onMouseLeave = () => {
         setIsDown(false);
+        setShouldShrink(false);
     };
 
     const onMouseUp = () => {
         setIsDown(false);
+        setShouldShrink(false);
     };
 
     const onMouseMove = (e: any) => {
@@ -51,6 +67,18 @@ export default function Loja({ roupaFloar }: LojaProps) {
             }
         });
     };
+
+    useEffect(() => {
+        const handleMouseUp = () => {
+            setButtonClicked(false);
+        };
+
+        window.addEventListener("mouseup", handleMouseUp);
+
+        return () => {
+            window.removeEventListener("mouseup", handleMouseUp);
+        };
+    }, []);
 
     return (
         <m.div
@@ -68,7 +96,13 @@ export default function Loja({ roupaFloar }: LojaProps) {
         >
             {/* Map over roupaFloar and display each item */}
             {roupaFloar.map((item) => (
-                <Product_Card item={item} key={item.sys.id} />
+                <Product_Card
+                    setButtonRef={addButtonRef}
+                    setButtonClicked={setButtonClicked}
+                    item={item}
+                    isUserClicking={shouldShrink}
+                    key={item.sys.id}
+                />
             ))}
         </m.div>
     );

@@ -5,17 +5,33 @@ import RoupaFloar from "@/types/RoupaFloar";
 import Link from "next/link";
 import CTFL_Img_Loader from "@/components/contentful/CTFL_Img_Loader";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
-const Product_Card = ({ item }: { item: RoupaFloar }) => {
+interface ProductCardProps {
+    item: RoupaFloar;
+    isUserClicking: boolean;
+    setButtonRef: (ref: HTMLButtonElement | null) => void;
+    setButtonClicked: (clicked: boolean) => void;
+}
+
+const Product_Card = ({ item, isUserClicking, setButtonClicked, setButtonRef }: ProductCardProps) => {
     const [imageFocus, setImageFocus] = useState(false);
 
-    const handleImageFocus = () => {
+    const handleImageFocus = (event: React.MouseEvent) => {
+        event.stopPropagation();
         setImageFocus(!imageFocus);
+        setButtonClicked(true);
     };
 
     return (
-        <m.div variants={basicFade} initial="hidden" animate="visible" exit="hidden" key={item.fields.slug} className="Product_Card">
+        <m.div
+            variants={basicFade}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            key={item.fields.slug}
+            className={isUserClicking ? "Product_Card no-grow" : "Product_Card"}
+        >
             {imageFocus && (
                 <>
                     <h2 className="Product_Card_Title">{item.fields.name}</h2>
@@ -25,7 +41,7 @@ const Product_Card = ({ item }: { item: RoupaFloar }) => {
                 </>
             )}
 
-            <button className="Btn Product_Card_Visibility_Btn" onClick={handleImageFocus}>
+            <button ref={setButtonRef} className="Btn Product_Card_Visibility_Btn" onClick={handleImageFocus}>
                 {imageFocus ? (
                     <span className="material-symbols-outlined">visibility_off</span>
                 ) : (
