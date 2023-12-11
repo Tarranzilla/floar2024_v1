@@ -7,6 +7,11 @@ import CTFL_Img_Loader from "@/components/contentful/CTFL_Img_Loader";
 
 import { useState, useRef, useEffect } from "react";
 
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/store/store";
+import { addToCart } from "@/store/slices/cartSlice";
+import { selectCartItemQuantity } from "@/store/selectors/cartSelectors";
+
 interface ProductCardProps {
     item: RoupaFloar;
     isUserClicking: boolean;
@@ -21,6 +26,23 @@ const Product_Card = ({ item, isUserClicking, setButtonClicked, setButtonRef }: 
         event.stopPropagation();
         setImageFocus(!imageFocus);
         setButtonClicked(true);
+    };
+
+    const dispatch = useDispatch();
+
+    const handleAddToCart = () => {
+        dispatch(addToCart(item));
+    };
+
+    const quantity = useSelector((state: RootState) => selectCartItemQuantity(state, item));
+
+    const redirectToWhatsApp = () => {
+        const phoneNumber = "+5541999977955"; // Replace with the actual phone number
+        const message = `Olá Joice! Tenho interesse em comprar a peça: ${item.fields.name}`; // Replace with the actual message
+        const encodedMessage = encodeURIComponent(message);
+        const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+        window.open(url, "_blank");
     };
 
     return (
@@ -55,8 +77,12 @@ const Product_Card = ({ item, isUserClicking, setButtonClicked, setButtonRef }: 
                         R$<span className="priceTag">{item.fields.price},00</span>
                     </m.h3>
                     <m.div variants={basicFade} initial="hidden" animate="visible" exit="hidden" className="Product_Card_Footer">
-                        <button className="Btn">Comprar Agora</button>
-                        <button className="Btn">Adicionar ao Carrinho</button>
+                        <button className="Btn" onClick={redirectToWhatsApp}>
+                            Comprar Agora
+                        </button>
+                        <button className="Btn" onClick={handleAddToCart}>
+                            Adicionar ao Carrinho {quantity > 0 ? "(" + quantity + ")" : null}
+                        </button>
                         <Link className="Btn" href={"loja/produto/" + item.fields.slug}>
                             Ver Detalhes
                         </Link>

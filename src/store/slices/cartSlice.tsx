@@ -1,64 +1,91 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "@/store/store";
 
-type Product = {
-  product_type: string,         // Tipos de Roupas
-  season: string,               // Estações do ano
-  name: string,                 // Nome do produto
-  year: number,                 // Ano de lançamento
-  price: number,                // Preço do produto
-  materials: string[],          // Materiais do produto
-  sizes: string[],              // Tamanhos do produto
-  intro: string,                // Introdução do produto
-  detail: string,               // Detalhes do produto
-  how_to_wash: string,          // Como lavar o produto
-  images: string[],             // Imagens do produto
-  videos: string[],             // Videos do produto
-  posts: string[],              // Posts do produto
-  creator: string,              // Criador do produto
-  related_products: string[]    // Produtos relacionados
-}
+import RoupaFloar from "@/types/RoupaFloar";
+
+export type CartItem = RoupaFloar & {
+    quantity: number;
+};
 
 type CartState = {
-  cart: {
-    products: Product[],
-    total: number,
-  },
-  offline_products: {
-    products: Product[],
-    fetchDate: string
-  }
-}
+    cart: {
+        products: CartItem[];
+        total: number;
+    };
+    offline_products: {
+        products: CartItem[];
+        fetchDate: string;
+    };
+};
 
 const initialState: CartState = {
-  cart: {
-    products: [],
-    total: 0,
-  },
-  offline_products: {
-    products: [],
-    fetchDate: ''
-  }
-}
+    cart: {
+        products: [],
+        total: 0,
+    },
+    offline_products: {
+        products: [],
+        fetchDate: "",
+    },
+};
 
 export const cartSlice = createSlice({
-  name: "cart",
-  initialState,
-  reducers: {
-    addToCart: (state, action: PayloadAction<Product>) => {
-      state.cart.products.push(action.payload);
-      state.cart.total += action.payload.price;
-    },
-    removeFromCart: (state, action: PayloadAction<number>) => {
-      const product = state.cart.products[action.payload];
-      state.cart.total -= product.price;
-      state.cart.products.splice(action.payload, 1);
-    },
-    setOfflineProducts: (state, action: PayloadAction<{ products: Product[], fetchDate: string }>) => {
-      state.offline_products = action.payload;
-    }
-  }
-})
+    name: "cart",
+    initialState,
+    reducers: {
+        addToCart: (state, action: PayloadAction<RoupaFloar>) => {
+            // Check if the product already exists in the cart
+            const existingProductIndex = state.cart.products.findIndex((product) => product.sys.id === action.payload.sys.id);
 
-export const { addToCart, removeFromCart, setOfflineProducts } = cartSlice.actions;
+            if (existingProductIndex >= 0) {
+                // If the product already exists in the cart, increment its quantity
+                state.cart.products[existingProductIndex].quantity += 1;
+            } else {
+                // If the product does not exist in the cart, add it with a quantity of 1
+                const newCartItem: CartItem = {
+                    ...action.payload,
+                    quantity: 1,
+                };
+                state.cart.products.push(newCartItem);
+            }
+
+            // Update the total price
+            state.cart.total += action.payload.fields.price;
+        },
+        removeFromCart: (state, action: PayloadAction<RoupaFloar>) => {
+            // Find the index of the product in the cart
+            const productIndex = state.cart.products.findIndex((product) => product.sys.id === action.payload.sys.id);
+
+            if (productIndex >= 0) {
+                // If the product is in the cart, decrease the total price and remove it
+                const product = state.cart.products[productIndex];
+                state.cart.total -= product.fields.price * product.quantity;
+                state.cart.products.splice(productIndex, 1);
+            }
+        },
+        decrementQuantity: (state, action: PayloadAction<RoupaFloar>) => {
+            // Find the index of the product in the cart
+            const productIndex = state.cart.products.findIndex((product) => product.sys.id === action.payload.sys.id);
+
+            if (productIndex >= 0) {
+                // If the product is in the cart, decrease its quantity
+                const product = state.cart.products[productIndex];
+                if (product.quantity > 1) {
+                    product.quantity -= 1;
+                    state.cart.total -= product.fields.price;
+                } else {
+                    // If the quantity is 1, remove the product from the cart
+                    state.cart.total -= product.fields.price;
+                    state.cart.products.splice(productIndex, 1);
+                }
+            }
+        },
+        setOfflineProducts: (state, action: PayloadAction<{ products: CartItem[]; fetchDate: string }>) => {
+            state.offline_products = action.payload;
+        },
+    },
+});
+
+export const { addToCart, decrementQuantity, removeFromCart, setOfflineProducts } = cartSlice.actions;
 
 export default cartSlice.reducer;

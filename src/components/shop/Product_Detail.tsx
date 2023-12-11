@@ -8,12 +8,25 @@ import CTFL_RichText from "@/components/contentful/CTFL_RichText";
 
 import { useState } from "react";
 
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/store/store";
+import { addToCart } from "@/store/slices/cartSlice";
+import { selectCartItemQuantity } from "@/store/selectors/cartSelectors";
+
 const Product_Detail = ({ item }: { item: RoupaFloar }) => {
     const [imageFocus, setImageFocus] = useState(false);
 
     const handleImageFocus = () => {
         setImageFocus(!imageFocus);
     };
+
+    const dispatch = useDispatch();
+
+    const handleAddToCart = () => {
+        dispatch(addToCart(item));
+    };
+
+    const quantity = useSelector((state: RootState) => selectCartItemQuantity(state, item));
 
     return (
         <m.div variants={basicFade} initial="hidden" animate="visible" exit="hidden" key={item.fields.slug} className="Product_Card Product_Detail">
@@ -45,7 +58,9 @@ const Product_Detail = ({ item }: { item: RoupaFloar }) => {
                     </m.h3>
                     <m.div variants={basicFade} initial="hidden" animate="visible" exit="hidden" className="Product_Card_Footer">
                         <button className="Btn">Comprar Agora</button>
-                        <button className="Btn">Adicionar ao Carrinho</button>
+                        <button className="Btn" onClick={handleAddToCart}>
+                            Adicionar ao Carrinho {quantity > 0 ? "(" + quantity + ")" : null}
+                        </button>
                         <Link className="Btn" href={"/loja"}>
                             Voltar para Loja
                         </Link>

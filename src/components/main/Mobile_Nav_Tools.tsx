@@ -14,6 +14,9 @@ export default function Main_Nav_Tools({ variant = "desktop" }: { variant?: "des
     const dispatch = useDispatch();
     const { isMenuOpen, isCartOpen, isSearchOpen } = useSelector((state: RootState) => state.userInterface);
 
+    const { products } = useSelector((state: RootState) => state.cart.cart);
+    const quantity = products.length;
+
     const handleMenuToggle = () => {
         dispatch(toggleMenu());
     };
@@ -62,6 +65,7 @@ export default function Main_Nav_Tools({ variant = "desktop" }: { variant?: "des
                     onClick={handleCartToggle}
                 >
                     <p className="Icon_Label Origin_Right">Carrinho</p>
+                    {quantity > 0 && <span id="Shopping_Cart_Indicator">{quantity}</span>}
                     <span className="material-symbols-outlined">shopping_cart</span>
                 </a>
             </li>
