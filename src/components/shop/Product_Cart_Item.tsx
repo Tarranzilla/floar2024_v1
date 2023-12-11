@@ -1,6 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 
+import CancelIcon from "@mui/icons-material/Cancel";
+import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+
 import RoupaFloar from "@/types/RoupaFloar";
 import { RootState } from "@/store/store";
 import { useSelector, useDispatch } from "react-redux";
@@ -47,14 +51,14 @@ const Product_Cart_Item = ({ item }: ProductCartItemProps) => {
                 </Link>
                 <div className="Carrinho_Item_Quantity_Container Dark_Pill">
                     <button className="Btn Round RemoveCartProduct_Btn Carrinho_Item_Btn" onClick={handleRemoveFromCart}>
-                        <span className="material-symbols-outlined">cancel</span>
+                        <CancelIcon />
                     </button>
                     <button className="Btn Round Carrinho_Item_Btn" onClick={handleDecrementQuantity}>
-                        <span className="material-symbols-outlined">remove</span>
+                        <RemoveCircleIcon />
                     </button>
                     <p className="Carrinho_Item_Quantity_Value">{quantity}</p>
                     <button className="Btn Round Carrinho_Item_Btn" onClick={handleAddToCart}>
-                        <span className="material-symbols-outlined">add</span>
+                        <AddCircleIcon />
                     </button>
                 </div>
             </div>

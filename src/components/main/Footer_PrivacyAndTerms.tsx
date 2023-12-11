@@ -1,20 +1,23 @@
 import Link from "next/link";
 
+import PrivacyTipIcon from "@mui/icons-material/PrivacyTip";
+import AssignmentIcon from "@mui/icons-material/Assignment";
+
 export default function Footer_PrivacyAndTerms() {
     return (
         <ul className="Footer_PrivacyAndTerms">
-        <li className="Social_Media_Container">
-            <Link className="Social_Media_Link Icon" href="/privacidade-e-termos">
-                <span className="material-symbols-outlined Google_Material_Icons">privacy_tip</span>
-                <p className="Icon_Label">Privacidade</p>
-            </Link>
-        </li>
-        <li className="Social_Media_Container">
-            <Link className="Social_Media_Link Icon" href="/privacidade-e-termos">
-                <span className="material-symbols-outlined Google_Material_Icons">assignment</span>
-                <p className="Icon_Label">Termos de Uso</p>
-            </Link>
-        </li>
-    </ul>
-    )
+            <li className="Social_Media_Container">
+                <Link className="Social_Media_Link Icon" href="/privacidade-e-termos">
+                    <PrivacyTipIcon className="Google_Material_Icons" />
+                    <p className="Icon_Label">Privacidade</p>
+                </Link>
+            </li>
+            <li className="Social_Media_Container">
+                <Link className="Social_Media_Link Icon" href="/privacidade-e-termos">
+                    <AssignmentIcon className="Google_Material_Icons" />
+                    <p className="Icon_Label">Termos de Uso</p>
+                </Link>
+            </li>
+        </ul>
+    );
 }

@@ -6,6 +6,11 @@ import { RootState } from "@/store/store";
 
 import { useRouter } from "next/router";
 
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import SearchIcon from "@mui/icons-material/Search";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
+
 export default function Main_Nav_Tools({ variant = "desktop" }: { variant?: "desktop" | "mobile" }) {
     const { pathname } = useRouter();
     const isUserOpen = pathname === "/usuario";
@@ -40,7 +45,7 @@ export default function Main_Nav_Tools({ variant = "desktop" }: { variant?: "des
                     <p className="Icon_Label Origin_Right">Carrinho</p>
                     {quantity > 0 && <span id="Shopping_Cart_Indicator">{quantity}</span>}
 
-                    <span className="material-symbols-outlined">shopping_cart</span>
+                    <ShoppingCartIcon />
                 </a>
             </li>
 
@@ -52,21 +57,21 @@ export default function Main_Nav_Tools({ variant = "desktop" }: { variant?: "des
                     onClick={handleSearchToggle}
                 >
                     <p className="Icon_Label Origin_Right">Busca</p>
-                    <span className="material-symbols-outlined">search</span>
+                    <SearchIcon />
                 </a>
             </li>
 
             <li className="Nav_Tool_Container">
                 <Link className={"Nav_Tool Menu_Btn Icon" + (isUserOpen ? " active " : "")} href="/usuario" title="Abrir a Aba de Usuário">
                     <p className="Icon_Label Origin_Right">Usuário</p>
-                    <span className="material-symbols-outlined">account_circle</span>
+                    <AccountCircleIcon />
                 </Link>
             </li>
 
             <li className="Menu_Btn_Container">
                 <a className={"Nav_Tool Menu_Btn Icon" + (isMenuOpen ? " active " : "")} href="#menu" title="Abrir o Menu" onClick={handleMenuToggle}>
                     <p className="Icon_Label Origin_Right">Menu</p>
-                    <span className="material-symbols-outlined">menu_book</span>
+                    <MenuBookIcon />
                 </a>
             </li>
         </ul>
