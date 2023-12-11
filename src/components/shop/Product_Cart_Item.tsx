@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 import RoupaFloar from "@/types/RoupaFloar";
 import { RootState } from "@/store/store";
@@ -29,7 +30,7 @@ const Product_Cart_Item = ({ item }: ProductCartItemProps) => {
     return (
         <li className="Carrinho_Item">
             <div className="Carrinho_Item_Image_Container">
-                <img className="Carrinho_Item_Image" src={item.fields.images[0].fields.file.url} alt="Produto" />
+                <Image width={240} height={240} className="Carrinho_Item_Image" src={item.fields.images[0].fields.file.url} alt="Produto" />
             </div>
 
             <div className="Carrinho_Item_info">
