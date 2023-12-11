@@ -14,9 +14,5 @@ export default function CTFL_Img_Loader(props) {
         setIsLoading(false);
     };
 
-    return (
-        <Suspense fallback={null}>
-            <Image className={`CLTF_Image ${isLoading ? "" : "fade-in"}`} alt={props.alt} loader={imageLoader} onLoad={handleImageLoad} {...props} />
-        </Suspense>
-    );
+    return <Image className={`CLTF_Image ${isLoading ? "" : "fade-in"}`} alt={props.alt} loader={imageLoader} onLoad={handleImageLoad} {...props} />;
 }
