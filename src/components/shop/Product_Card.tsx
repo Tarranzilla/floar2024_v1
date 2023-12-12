@@ -12,8 +12,11 @@ import { RootState } from "@/store/store";
 import { addToCart } from "@/store/slices/cartSlice";
 import { selectCartItemQuantity } from "@/store/selectors/cartSelectors";
 
+import InfoIcon from "@mui/icons-material/Info";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import FullscreenIcon from "@mui/icons-material/Fullscreen";
+import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
 
 interface ProductCardProps {
     item: RoupaFloar;
@@ -24,6 +27,7 @@ interface ProductCardProps {
 
 const Product_Card = ({ item, isUserClicking, setButtonClicked, setButtonRef }: ProductCardProps) => {
     const [imageFocus, setImageFocus] = useState(false);
+    const [contentFocus, setContentFocus] = useState(false);
 
     const handleImageFocus = (event: React.MouseEvent) => {
         event.stopPropagation();
@@ -66,8 +70,12 @@ const Product_Card = ({ item, isUserClicking, setButtonClicked, setButtonRef }: 
                 </>
             )}
 
+            <button ref={setButtonRef} className="Btn Product_Card_Visibility_Btn Full_Screen_Btn Desktop_Only" onClick={handleImageFocus}>
+                {contentFocus ? <FullscreenExitIcon /> : <FullscreenIcon />}
+            </button>
+
             <button ref={setButtonRef} className="Btn Product_Card_Visibility_Btn" onClick={handleImageFocus}>
-                {imageFocus ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                {imageFocus ? <VisibilityIcon /> : <InfoIcon />}
             </button>
 
             {imageFocus && (
