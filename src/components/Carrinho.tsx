@@ -4,17 +4,19 @@ import { motion as m } from "framer-motion";
 import { basicFade } from "@/lib/animations";
 
 import { useSelector, useDispatch } from "react-redux";
-import { toggleCart } from "@/store/slices/uiSlice";
+import { toggleElement } from "@/store/slices/uiSlice";
 import { RootState } from "@/store/store";
 
 import Product_Cart_Item from "./shop/Product_Cart_Item";
+import CancelIcon from "@mui/icons-material/Cancel";
 
 export default function Carrinho() {
     const dispatch = useDispatch();
-    const { isCartOpen } = useSelector((state: RootState) => state.userInterface);
+    const { openElement } = useSelector((state: RootState) => state.userInterface);
+    const isCartOpen = openElement === "cart";
 
     const handleCartToggle = () => {
-        dispatch(toggleCart());
+        dispatch(toggleElement("cart"));
     };
 
     const cartItems = useSelector((state: RootState) => state.cart.cart.products);
@@ -38,7 +40,7 @@ export default function Carrinho() {
                         <div className="Carrinho_Header">
                             <h2 className="Carrinho_Title">Carrinho</h2>
                             <button className="Btn Round" onClick={handleCartToggle}>
-                                <span className="material-symbols-outlined">close</span>
+                                <CancelIcon />
                             </button>
                         </div>
 

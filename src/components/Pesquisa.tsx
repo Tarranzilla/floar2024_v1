@@ -4,15 +4,19 @@ import { motion as m } from "framer-motion";
 import { basicFade } from "@/lib/animations";
 
 import { useSelector, useDispatch } from "react-redux";
-import { toggleSearch } from "@/store/slices/uiSlice";
+import { toggleElement } from "@/store/slices/uiSlice";
 import { RootState } from "@/store/store";
+
+import SearchIcon from "@mui/icons-material/Search";
 
 export default function Pesquisa() {
     const dispatch = useDispatch();
-    const { isSearchOpen } = useSelector((state: RootState) => state.userInterface);
+    const { openElement } = useSelector((state: RootState) => state.userInterface);
+
+    const isSearchOpen = openElement === "search";
 
     const handleSearchToggle = () => {
-        dispatch(toggleSearch());
+        dispatch(toggleElement("search"));
     };
 
     return (
@@ -25,7 +29,7 @@ export default function Pesquisa() {
 
                     <div className="Search_Input_Container Pill">
                         <input type="text" className="Search_Input" placeholder="Digite aqui sua pesquisa..." />
-                        <button className="material-symbols-outlined">mystery</button>
+                        <SearchIcon className="Search_Icon" />
                     </div>
 
                     <button className="Btn" onClick={handleSearchToggle}>

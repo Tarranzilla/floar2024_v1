@@ -12,6 +12,9 @@ import { RootState } from "@/store/store";
 import { addToCart } from "@/store/slices/cartSlice";
 import { selectCartItemQuantity } from "@/store/selectors/cartSelectors";
 
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+
 interface ProductCardProps {
     item: RoupaFloar;
     isUserClicking: boolean;
@@ -64,11 +67,7 @@ const Product_Card = ({ item, isUserClicking, setButtonClicked, setButtonRef }: 
             )}
 
             <button ref={setButtonRef} className="Btn Product_Card_Visibility_Btn" onClick={handleImageFocus}>
-                {imageFocus ? (
-                    <span className="material-symbols-outlined">visibility_off</span>
-                ) : (
-                    <span className="material-symbols-outlined">visibility</span>
-                )}
+                {imageFocus ? <VisibilityOffIcon /> : <VisibilityIcon />}
             </button>
 
             {imageFocus && (
@@ -102,8 +101,8 @@ const Product_Card = ({ item, isUserClicking, setButtonClicked, setButtonRef }: 
                 <CTFL_Img_Loader
                     src={item.fields.images[0].fields.file.url}
                     alt={item.fields.images[0].fields.description}
-                    width={1600}
-                    height={800}
+                    width={800}
+                    height={400}
                 />
             </div>
         </m.div>

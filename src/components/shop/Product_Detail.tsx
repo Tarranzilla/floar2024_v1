@@ -13,6 +13,9 @@ import { RootState } from "@/store/store";
 import { addToCart } from "@/store/slices/cartSlice";
 import { selectCartItemQuantity } from "@/store/selectors/cartSelectors";
 
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+
 const Product_Detail = ({ item }: { item: RoupaFloar }) => {
     const [imageFocus, setImageFocus] = useState(false);
 
@@ -70,11 +73,7 @@ const Product_Detail = ({ item }: { item: RoupaFloar }) => {
 
             {imageFocus && (
                 <button className="Btn Product_Card_Visibility_Btn" onClick={handleImageFocus}>
-                    {imageFocus ? (
-                        <span className="material-symbols-outlined">visibility_off</span>
-                    ) : (
-                        <span className="material-symbols-outlined">visibility</span>
-                    )}
+                    {imageFocus ? <VisibilityOffIcon /> : <VisibilityIcon />}
                 </button>
             )}
         </m.div>

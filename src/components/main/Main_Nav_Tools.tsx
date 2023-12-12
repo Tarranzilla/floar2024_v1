@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { useSelector, useDispatch } from "react-redux";
-import { toggleMenu, toggleCart, toggleSearch } from "@/store/slices/uiSlice";
+import { toggleElement } from "@/store/slices/uiSlice";
 import { RootState } from "@/store/store";
 
 import { useRouter } from "next/router";
@@ -16,21 +16,25 @@ export default function Main_Nav_Tools({ variant = "desktop" }: { variant?: "des
     const isUserOpen = pathname === "/usuario";
 
     const dispatch = useDispatch();
-    const { isMenuOpen, isCartOpen, isSearchOpen } = useSelector((state: RootState) => state.userInterface);
+    const { openElement } = useSelector((state: RootState) => state.userInterface);
+
+    const isCartOpen = openElement === "cart";
+    const isSearchOpen = openElement === "search";
+    const isMenuOpen = openElement === "menu";
 
     const { products } = useSelector((state: RootState) => state.cart.cart);
     const quantity = products.length;
 
     const handleMenuToggle = () => {
-        dispatch(toggleMenu());
+        dispatch(toggleElement("menu"));
     };
 
     const handleCartToggle = () => {
-        dispatch(toggleCart());
+        dispatch(toggleElement("cart"));
     };
 
     const handleSearchToggle = () => {
-        dispatch(toggleSearch());
+        dispatch(toggleElement("search"));
     };
 
     return (

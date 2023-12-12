@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { toggleMenu } from "@/store/slices/uiSlice";
+import { toggleElement } from "@/store/slices/uiSlice";
 import { RootState } from "@/store/store";
 
 import { motion as m } from "framer-motion";
@@ -11,10 +11,12 @@ import Link from "next/link";
 
 export default function Menu() {
     const dispatch = useDispatch();
-    const { isMenuOpen } = useSelector((state: RootState) => state.userInterface);
+    const { openElement } = useSelector((state: RootState) => state.userInterface);
+
+    const isMenuOpen = openElement === "menu";
 
     const handleMenuToggle = () => {
-        dispatch(toggleMenu());
+        dispatch(toggleElement("menu"));
     };
 
     return (
