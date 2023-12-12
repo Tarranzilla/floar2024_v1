@@ -1,6 +1,8 @@
 import { motion as m } from "framer-motion";
 import { basicFade } from "@/lib/animations";
 
+const mapsAPIKey = process.env.GOOGLE_MAPS_API_KEY;
+
 export default function Contato() {
     return (
         <m.div variants={basicFade} initial="hidden" animate="visible" exit="hidden" className="Main_Contato" key="Contato">
@@ -9,7 +11,7 @@ export default function Contato() {
                 width="420"
                 height="420"
                 referrerPolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAq8gx1mbenjZlhA9oqRMfQGunNyYSt_JM&q=Florianopolis,Brasil&zoom=15"
+                src={`https://www.google.com/maps/embed/v1/place?key=${mapsAPIKey}&q=Florianopolis,Brasil&zoom=15`}
                 allowFullScreen
             ></iframe>
 
