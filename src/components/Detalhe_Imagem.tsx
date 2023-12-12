@@ -4,15 +4,17 @@ import { motion as m } from "framer-motion";
 import { basicFade } from "@/lib/animations";
 
 import { useSelector, useDispatch } from "react-redux";
-import { toggleImageDetail } from "@/store/slices/uiSlice";
+import { toggleElement } from "@/store/slices/uiSlice";
 import { RootState } from "@/store/store";
 
 export default function Detalhe_Imagem() {
     const dispatch = useDispatch();
-    const { isImageDetailOpen } = useSelector((state: RootState) => state.userInterface);
+    const { openElement } = useSelector((state: RootState) => state.userInterface);
+
+    const isImageDetailOpen = openElement === "productDetail";
 
     const handleImageDetailToggle = () => {
-        dispatch(toggleImageDetail());
+        dispatch(toggleElement("productDetail"));
     };
 
     return (
