@@ -19,58 +19,14 @@ import { setProducts } from "@/store/slices/searchSlice";
 
 import { useDispatch } from "react-redux";
 
+import Image_ScrollGrab from "@/components/general/Image_ScrollGrab";
+
 interface LojaProps {
     roupaFloar: RoupaFloar[];
 }
 
 export default function Loja({ roupaFloar }: LojaProps) {
     const dispatch = useDispatch();
-    const ref = useRef<HTMLDivElement>(null);
-
-    const [buttonClicked, setButtonClicked] = useState(false);
-    const [isDown, setIsDown] = useState(false);
-    const [startX, setStartX] = useState(0);
-    const [scrollLeft, setScrollLeft] = useState(0);
-    const isDesktop = useMediaQuery({ query: "(min-width: 1000px)" });
-
-    const onMouseDown = (e: any) => {
-        if (!isDesktop || !ref.current) return;
-        setIsDown(true);
-        setStartX(e.pageX - ref.current.offsetLeft);
-        setScrollLeft(ref.current.scrollLeft);
-    };
-
-    const onMouseLeave = () => {
-        setIsDown(false);
-    };
-
-    const onMouseUp = () => {
-        setIsDown(false);
-    };
-
-    const onMouseMove = (e: any) => {
-        if (!isDown || !isDesktop || !ref.current) return;
-        e.preventDefault();
-        const x = e.pageX - ref.current.offsetLeft;
-        const walk = (x - startX) * 2; //scroll-fast
-        requestAnimationFrame(() => {
-            if (ref.current) {
-                ref.current.scrollLeft = scrollLeft - walk;
-            }
-        });
-    };
-
-    useEffect(() => {
-        const handleMouseUp = () => {
-            setButtonClicked(false);
-        };
-
-        window.addEventListener("mouseup", handleMouseUp);
-
-        return () => {
-            window.removeEventListener("mouseup", handleMouseUp);
-        };
-    }, []);
 
     useEffect(() => {
         const SearchProducts = [] as SearchResult[];
@@ -100,23 +56,12 @@ export default function Loja({ roupaFloar }: LojaProps) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <m.div
-                variants={basicFade}
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-                className={"Main_Loja"}
-                key="Loja"
-                onMouseDown={onMouseDown}
-                onMouseLeave={onMouseLeave}
-                onMouseUp={onMouseUp}
-                onMouseMove={onMouseMove}
-                ref={ref}
-            >
-                {/* Map over roupaFloar and display each item */}
-                {roupaFloar.map((item) => (
-                    <Product_Card item={item} key={item.sys.id} />
-                ))}
+            <m.div variants={basicFade} initial="hidden" animate="visible" exit="hidden" className={"Main_Loja"} key="Loja">
+                <Image_ScrollGrab mobileRow={false}>
+                    {roupaFloar.map((item) => (
+                        <Product_Card item={item} key={item.sys.id} />
+                    ))}
+                </Image_ScrollGrab>
             </m.div>
         </>
     );

@@ -16,6 +16,14 @@ import { selectCartItemQuantity } from "@/store/selectors/cartSelectors";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
+import Image_ScrollGrab from "../general/Image_ScrollGrab";
+import Image from "next/image";
+
+/*
+<div className="Product_Detail_Image_Container"></div>
+
+*/
+
 const Product_Detail = ({ item }: { item: RoupaFloar }) => {
     const [imageFocus, setImageFocus] = useState(false);
 
@@ -34,18 +42,29 @@ const Product_Detail = ({ item }: { item: RoupaFloar }) => {
     return (
         <m.div variants={basicFade} initial="hidden" animate="visible" exit="hidden" key={item.fields.slug} className="Product_Card Product_Detail">
             <div className="Product_Detail_Image_Container">
-                {item.fields.images.map((image, index) => {
-                    return (
+                <Image_ScrollGrab mobileRow={true}>
+                    {item.fields.images.map((image, index) => {
+                        return (
+                            <CTFL_Img_Loader
+                                src={image.fields.file.url}
+                                key={image.fields.file.url + index}
+                                alt={image.fields.description}
+                                width={1600}
+                                height={800}
+                                onClick={handleImageFocus}
+                            />
+                        );
+                    })}
+                    {item.fields.images.length === 1 && (
                         <CTFL_Img_Loader
-                            src={image.fields.file.url}
-                            key={image.fields.file.url + index}
-                            alt={image.fields.description}
+                            src={item.fields.images[0].fields.file.url}
+                            alt={item.fields.images[0].fields.description}
                             width={1600}
                             height={800}
                             onClick={handleImageFocus}
                         />
-                    );
-                })}
+                    )}
+                </Image_ScrollGrab>
             </div>
 
             {!imageFocus && (
