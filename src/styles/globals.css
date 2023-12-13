@@ -549,7 +549,7 @@ main {
 .Home_Content_Wrapper {
     display: flex;
     flex-direction: column;
-    max-width: 640px;
+    max-width: 720px;
     gap: 1rem;
 }
 
@@ -557,12 +557,16 @@ main {
     font-family: "Santiago", sans-serif;
     font-weight: 800;
     font-size: 2rem;
+    letter-spacing: 0.05rem;
+    padding-inline: 1rem;
 }
 
-.Home_Question {
+.Home_Text {
     font-family: "Santiago", sans-serif;
     font-weight: 800;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    letter-spacing: 0.05rem;
+    padding-inline: 1rem;
 }
 
 .Home_Choice_Container {
@@ -583,11 +587,32 @@ main {
     border: 1px solid #000;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    max-width: 20rem;
+    max-width: 24rem;
+}
+
+.Home_Choice_Title {
+    font-family: "Santiago", sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: 0.05rem;
 }
 
 .Home_Btn {
     gap: 0.5rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.Home_Sobre_Btn:focus-within,
+.Home_Sobre_Btn:hover,
+.Home_Btn:focus-within,
+.Home_Btn:hover {
+    transform: scale(1.05);
+}
+
+.Home_Sobre_Btn {
+    padding: 1rem;
+    gap: 0.5rem;
+    transition: all 0.3s ease-in-out;
 }
 
 .Main_Contato {
@@ -1094,18 +1119,32 @@ a {
         overflow-x: hidden;
     }
 
+    .Home_Content_Wrapper {
+        align-items: center;
+    }
+
     .Image_Home {
         width: 20rem;
     }
 
     .Home_Welcome {
         text-align: center;
-        padding-block: 1rem;
+        padding-block: 0;
         padding-inline: 2rem;
+    }
+
+    .Home_Text {
+        text-align: center;
     }
 
     .Home_Choice_Container {
         flex-direction: column;
+        align-items: center;
+    }
+
+    .Home_Sobre_Btn {
+        width: 100%;
+        max-width: 24rem;
     }
 
     .Main_Contato,

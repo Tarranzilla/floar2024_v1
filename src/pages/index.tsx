@@ -8,6 +8,8 @@ import { basicFade } from "@/lib/animations";
 
 import CheckroomIcon from "@mui/icons-material/Checkroom";
 import ContentCutIcon from "@mui/icons-material/ContentCut";
+import StorefrontIcon from "@mui/icons-material/Storefront";
+import HistoryEduIcon from "@mui/icons-material/HistoryEdu";
 
 const phoneNumber = "5541999977955";
 
@@ -26,10 +28,10 @@ export default function Home() {
                 <Image className="Image_Home" src="/idv/marca/Marca_Floar_Preto.png" alt="Floar Logo" width={420} height={420} priority />
                 <div className="Home_Content_Wrapper">
                     <h2 className="Home_Welcome">Boas Vindas ao Atelier Floar!</h2>
-                    <p>Somos um Atelier de Moda Autoral, Independente e Sustentável.</p>
+                    <h3 className="Home_Text">Aqui produzimos Moda Autoral, Independente e Sustentável.</h3>
                     <div className="Home_Choice_Container">
                         <div className="Home_Choice">
-                            <p>
+                            <p className="Home_Choice_Title">
                                 <strong>Encomende peças exclusivas e feitas sob medida diretamente com a Joice!</strong>
                             </p>
                             <p>Descreva a idéia básica da roupa que você imagina e criaremos conjuntamente uma peça única!</p>
@@ -39,22 +41,20 @@ export default function Home() {
                             </Link>
                         </div>
                         <div className="Home_Choice">
-                            <p>
+                            <p className="Home_Choice_Title">
                                 <strong>Acesse a Loja Online e conheça nossas coleções de peças existentes!</strong>
                             </p>
                             <p>Escolha a que mais lhe interessa e caso deseje mais de uma peça - finalize o pedido no carrinho!</p>
                             <Link className="Dark_Pill Home_Btn" href="/loja">
-                                <CheckroomIcon className="Home_Btn_Icon" />
-                                Acessar a Loja
+                                <StorefrontIcon className="Home_Btn_Icon" />
+                                Acesse a Loja
                             </Link>
                         </div>
                     </div>
-                    <p>
-                        <Link className="Inline_Link" href={"/sobre"}>
-                            Clique Aqui
-                        </Link>{" "}
-                        para saber mais sobre nossa história.
-                    </p>
+                    <Link className="Dark_Pill Home_Sobre_Btn" href={"/sobre"}>
+                        <HistoryEduIcon className="Home_Btn_Icon" />
+                        Saiba mais sobre nossa história!
+                    </Link>{" "}
                 </div>
             </m.div>
         </>
