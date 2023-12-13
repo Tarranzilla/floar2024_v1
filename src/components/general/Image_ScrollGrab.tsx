@@ -45,6 +45,12 @@ const Image_ScrollGrab = ({ children, mobileRow }: ImageScrollGrabProps) => {
         });
     };
 
+    const onWheel = (e: React.WheelEvent) => {
+        if (!isDesktop || !ref.current) return;
+        e.preventDefault();
+        ref.current.scrollLeft += e.deltaY;
+    };
+
     useEffect(() => {
         const handleMouseUp = () => {
             setButtonClicked(false);
@@ -69,6 +75,7 @@ const Image_ScrollGrab = ({ children, mobileRow }: ImageScrollGrabProps) => {
             onMouseLeave={onMouseLeave}
             onMouseUp={onMouseUp}
             onMouseMove={onMouseMove}
+            onWheel={onWheel}
             ref={ref}
         >
             {children}

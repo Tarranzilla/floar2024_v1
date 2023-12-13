@@ -22,44 +22,37 @@ export default function Sobre() {
 
                 <div className="Sobre_Text_Content">
                     <h1 className="Main_Title">Sobre a Joice e seu Atelier</h1>
+                    <p className="Sobre_Paragrafo">Oi, eu sou a Joice!</p>
                     <p className="Sobre_Paragrafo">
-                        Olá! Meu nome é Joice, moro em Florianópolis desde 2007, num lugar encantador que é o Canto da Lagoa em meio a uma natureza
-                        exuberante que me inspira muito e é onde eu tenho meu ateliê de costura.
+                        Minha paixão por criar é o que me move desde sempre, e agora tenho o prazer de apresentar a você o Ateliê Floar!
                     </p>
                     <p className="Sobre_Paragrafo">
-                        Tenho uma filha, a Sophia, tenho gatos, cachorros, gosto de cantar, dançar, faço yoga, cerâmica e adoro costurar.
+                        Viver em meio a uma natureza exuberate me inspira todos os dias a criar e vestir roupas mais leves e confortáveis, que são ao
+                        mesmo tempo elegantes e versáteis, para que você se sinta livre em qualquer ocasião.
                     </p>
                     <p className="Sobre_Paragrafo">
-                        Sou feminista, artista e acredito num mundo melhor, com mais respeito às diversidades e mais justiça social.
+                        Todo o processo é feito por mim com muito carinho. Os tecidos, geralmente de malha, são selecionados a partir do descarte de
+                        outras marcas, e as peças muitas vezes surgem do formato dos retalhos e das particularidades dos tecidos. Por isso, são
+                        exclusivas, únicas e produzidas em quantidade limitada.
                     </p>
                     <p className="Sobre_Paragrafo">
-                        Aprendi a costurar com minha mãe aos 10 anos de idade. Fiz cursos de modelagem e costura mas onde aprendi mesmo foi convivendo
-                        e tendo aulas práticas de alta costura com uma mulher incrível, Dona Nadir, com quem aprendi muito sobre costura e sobre a
-                        vida. Desde então segui fazendo roupas para a família e para amigos.
+                        Pensando em um descarte responsável, criei o Brechó Floar, onde você pode dar um destino adequado para aquelas roupas Floar
+                        que não servem mais, seja pelo tamanho ou por não representarem mais você. Ao doar uma peça Floar em boas condições, você
+                        ganha 50% de desconto em uma nova peça Floar de sua escolha.
+                    </p>
+                    <p className="Sobre_Paragrafo">O valor arrecadado com o Brechó será destinado a causas sociais regionais.</p>
+                    <p className="Sobre_Paragrafo">
+                        Além das roupas, a Floar oferece também bolsters para Yoga e almofadas de meditação, preenchidos com restos de tecidos que
+                        seriam descartados.
                     </p>
                     <p className="Sobre_Paragrafo">
-                        Fiz alguns figurinos para amigos artistas, sempre me divertindo muito e com muito encantamento pela transformação de um
-                        simples pedaço de tecido em roupas que fazem com que as pessoas sintam-se bonitas e confortáveis.
+                        Vestir é um ato político, uma maneira de você se expressar no mundo, portanto lembre-se sempre de comprar somente o que você
+                        realmente precisa. Busque conhecer o ciclo de produção do que você consome e não esqueça de incentivar a produção local,
+                        autoral e independente.
                     </p>
-                    <p className="Sobre_Paragrafo">
-                        Hoje a paixão por costurar fez com que eu criasse a Floar, onde me realizo fazendo roupas com muito cuidado, amor e
-                        consciência, entendendo que vestir é um ato político e que as pessoas não usam roupas só para cobrir o corpo ou se protegerem
-                        e, sim para expressarem-se de forma livre e autêntica.
-                    </p>
-                    <p className="Sobre_Paragrafo">
-                        Trabalho com tecidos de malha e todo o processo é feito por mim, desde a compra de tecidos, em lojas que vendem descartes da
-                        indústria da moda, a criação dos modelos, a execução dos moldes e a confecção das peças.
-                    </p>
-                    <p className="Sobre_Paragrafo">
-                        As roupas são feitas sob demanda mas sempre serão apresentadas como peças únicas que poderão ser adquiridas ou replicadas
-                        adequando-se ao tamanho e gosto de cada pessoa dependendo da disponibilidade dos tecidos.
-                    </p>
-                    <p className="Sobre_Paragrafo">
-                        Espero que todos nós, tenhamos mais consciência em relação ao consumo, comprando somente o que é realmente necessário e também
-                        espero que o descarte daquilo que não nos serve mais seja feito de modo responsável na tentativa de diminuir os danos à
-                        natureza
-                    </p>
-                    <p className="Sobre_Paragrafo">Me divirto fazendo estas roupas e espero que você também se divirta muito as usando!</p>
+                    <p className="Sobre_Paragrafo">Preços especiais estão disponíveis para estudantes e artistas.</p>
+                    <p className="Sobre_Paragrafo">Obrigada por escolher a Floar</p>
+                    <p className="Sobre_Paragrafo">Eu me divirto fazendo e espero que você se divirta usando!</p>
                 </div>
             </m.div>
         </>
