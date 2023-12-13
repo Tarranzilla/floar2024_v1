@@ -17,13 +17,28 @@ body {
     height: 100%;
     max-height: 100vh;
     max-height: 100dvh;
-    overflow-x: hidden;
+    overflow: hidden;
     font-family: sans-serif;
 }
 
 body {
     display: flex;
     flex-direction: column;
+    position: relative;
+}
+
+.Dynamic_Background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-height: 100vh;
+    max-height: 100dvh;
+    backdrop-filter: blur(5px);
+    object-fit: cover;
+    opacity: 70%;
+    z-index: -1;
 }
 
 #__next {
@@ -344,6 +359,8 @@ body {
     width: 100%;
     padding: 1rem;
     gap: 1rem;
+    background-color: #ffffffad;
+    backdrop-filter: blur(3px);
 }
 
 .Nav_Logo {
@@ -475,7 +492,6 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-inline: 1rem;
     overflow: hidden;
 }
 
@@ -527,6 +543,7 @@ main {
     display: flex;
     flex-direction: row;
     align-items: center;
+    padding: 2rem;
 }
 
 .Home_Content_Wrapper {
@@ -566,6 +583,7 @@ main {
     border: 1px solid #000;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    max-width: 20rem;
 }
 
 .Home_Btn {
@@ -708,7 +726,6 @@ main {
     width: 100%;
     gap: 1rem;
     scroll-behavior: unset;
-    border-radius: 1rem 1rem 0 0;
     cursor: grab;
 
     overflow-y: auto;
@@ -895,6 +912,7 @@ main {
     overflow-x: auto;
     padding-bottom: 0.5rem;
     cursor: grab;
+    padding: 0.5rem;
 }
 
 a {
@@ -928,6 +946,8 @@ a {
     align-items: center;
     padding: 1rem;
     gap: 1rem;
+    background-color: #ffffffad;
+    backdrop-filter: blur(3px);
 }
 
 .Footer_PrivacyAndTerms {
@@ -1066,6 +1086,7 @@ a {
 
     .Main_Home {
         height: 100%;
+        width: 100%;
         overflow-y: auto;
         display: flex;
         flex-direction: column;

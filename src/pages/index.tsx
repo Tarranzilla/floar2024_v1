@@ -27,16 +27,6 @@ export default function Home() {
                 <div className="Home_Content_Wrapper">
                     <h2 className="Home_Welcome">Boas Vindas ao Atelier Floar!</h2>
                     <p>Somos um Atelier de Moda Autoral, Independente e Sustentável.</p>
-                    <p>
-                        <Link className="Inline_Link" href={"/sobre"}>
-                            Clique Aqui
-                        </Link>{" "}
-                        para saber mais sobre nossa história.
-                    </p>
-                    <p className="Home_Text">
-                        Todas as nossas roupas são confecionadas sob demanda e terão suas medidas feitas especialmente para você!
-                    </p>
-                    <h3 className="Home_Question">Como eu encomendo uma roupa?</h3>
                     <div className="Home_Choice_Container">
                         <div className="Home_Choice">
                             <p>
@@ -59,6 +49,12 @@ export default function Home() {
                             </Link>
                         </div>
                     </div>
+                    <p>
+                        <Link className="Inline_Link" href={"/sobre"}>
+                            Clique Aqui
+                        </Link>{" "}
+                        para saber mais sobre nossa história.
+                    </p>
                 </div>
             </m.div>
         </>
