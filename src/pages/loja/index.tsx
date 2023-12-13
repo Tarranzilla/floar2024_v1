@@ -13,12 +13,17 @@ import CTFL_Img_Loader from "@/components/contentful/CTFL_Img_Loader";
 import Product_Card from "@/components/shop/Product_Card";
 
 import RoupaFloar from "@/types/RoupaFloar";
+import { SearchResult } from "@/store/slices/searchSlice";
+import { setProducts } from "@/store/slices/searchSlice";
+
+import { useDispatch } from "react-redux";
 
 interface LojaProps {
     roupaFloar: RoupaFloar[];
 }
 
 export default function Loja({ roupaFloar }: LojaProps) {
+    const dispatch = useDispatch();
     const ref = useRef<HTMLDivElement>(null);
     const [buttonRefs, setButtonRefs] = useState<HTMLButtonElement[]>([]);
 
@@ -78,6 +83,25 @@ export default function Loja({ roupaFloar }: LojaProps) {
         return () => {
             window.removeEventListener("mouseup", handleMouseUp);
         };
+    }, []);
+
+    useEffect(() => {
+        const SearchProducts = [] as SearchResult[];
+
+        roupaFloar.map((item: RoupaFloar) => {
+            SearchProducts.push({
+                id: item.sys.id,
+                name: item.fields.name,
+                intro: item.fields.intro,
+                type: "product",
+                class: item.fields.category,
+                url: "/loja/produto/" + item.fields.slug,
+                icon: item.fields.images[0].fields.file.url,
+                results: [],
+            });
+        });
+
+        dispatch(setProducts(SearchProducts));
     }, []);
 
     return (
