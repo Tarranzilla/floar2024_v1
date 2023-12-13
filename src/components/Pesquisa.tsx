@@ -60,7 +60,7 @@ export default function Pesquisa() {
                                 <div className="Search_Result" key={product.id}>
                                     <Image
                                         className="Search_Result_Image"
-                                        src={"https://" + product.icon}
+                                        src={"https:" + product.icon}
                                         alt={product.name}
                                         width={120}
                                         height={120}
