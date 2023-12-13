@@ -20,19 +20,18 @@ import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
 
 interface ProductCardProps {
     item: RoupaFloar;
-    isUserClicking: boolean;
-    setButtonRef: (ref: HTMLButtonElement | null) => void;
-    setButtonClicked: (clicked: boolean) => void;
 }
 
-const Product_Card = ({ item, isUserClicking, setButtonClicked, setButtonRef }: ProductCardProps) => {
+const Product_Card = ({ item }: ProductCardProps) => {
     const [imageFocus, setImageFocus] = useState(false);
     const [contentFocus, setContentFocus] = useState(false);
 
-    const handleImageFocus = (event: React.MouseEvent) => {
-        event.stopPropagation();
+    const handleContentFocus = () => {
+        setContentFocus(!contentFocus);
+    };
+
+    const handleImageFocus = () => {
         setImageFocus(!imageFocus);
-        setButtonClicked(true);
     };
 
     const dispatch = useDispatch();
@@ -59,7 +58,7 @@ const Product_Card = ({ item, isUserClicking, setButtonClicked, setButtonRef }: 
             animate="visible"
             exit="hidden"
             key={item.fields.slug}
-            className={isUserClicking ? "Product_Card no-grow" : "Product_Card"}
+            className={contentFocus ? "Product_Card active" : "Product_Card"}
         >
             {imageFocus && (
                 <>
@@ -70,11 +69,11 @@ const Product_Card = ({ item, isUserClicking, setButtonClicked, setButtonRef }: 
                 </>
             )}
 
-            <button ref={setButtonRef} className="Btn Product_Card_Visibility_Btn Full_Screen_Btn Desktop_Only" onClick={handleImageFocus}>
+            <button className="Btn Product_Card_Visibility_Btn Full_Screen_Btn Desktop_Only" onClick={handleContentFocus}>
                 {contentFocus ? <FullscreenExitIcon /> : <FullscreenIcon />}
             </button>
 
-            <button ref={setButtonRef} className="Btn Product_Card_Visibility_Btn" onClick={handleImageFocus}>
+            <button className="Btn Product_Card_Visibility_Btn" onClick={handleImageFocus}>
                 {imageFocus ? <VisibilityIcon /> : <InfoIcon />}
             </button>
 

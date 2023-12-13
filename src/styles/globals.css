@@ -1041,12 +1041,8 @@ a {
         min-width: 420px;
     }
 
-    .Product_Card:hover {
+    .Product_Card.active {
         min-width: 840px;
-    }
-
-    .Product_Card.no-grow:hover {
-        min-width: 420px;
     }
 
     .Product_Detail {

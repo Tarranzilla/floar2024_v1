@@ -5,6 +5,8 @@ import { getEntryBySlug, getEntriesByContentTypeAndPreviewMode } from "@/lib/con
 import { GetStaticPropsContext } from "next";
 
 import Link from "next/link";
+import Head from "next/head";
+
 import Product_Detail from "@/components/shop/Product_Detail";
 
 interface RoupaFloar {
@@ -45,7 +47,15 @@ export default function ProdutoDetalhe({ roupaFloar }: { roupaFloar: RoupaFloar 
         return <div>Carregando ...</div>; // Or some other placeholder
     }
 
-    return <Product_Detail item={roupaFloar} />;
+    return (
+        <>
+            <Head>
+                <title>{"Atelier Floar | Loja | " + roupaFloar.fields.name}</title>
+                <meta name="description" content={roupaFloar.fields.intro} />
+            </Head>
+            <Product_Detail item={roupaFloar} />
+        </>
+    );
 }
 
 export async function getStaticProps(context: GetStaticPropsContext) {

@@ -6,6 +6,7 @@ import { useMediaQuery } from "react-responsive";
 import { useState, useRef, useEffect, createRef } from "react";
 
 import Link from "next/link";
+import Head from "next/head";
 
 import { getEntriesByContentTypeAndPreviewMode } from "@/lib/contentful/contentful"; // Import the function
 import CTFL_Img_Loader from "@/components/contentful/CTFL_Img_Loader";
@@ -25,40 +26,26 @@ interface LojaProps {
 export default function Loja({ roupaFloar }: LojaProps) {
     const dispatch = useDispatch();
     const ref = useRef<HTMLDivElement>(null);
-    const [buttonRefs, setButtonRefs] = useState<HTMLButtonElement[]>([]);
-
-    const addButtonRef = (ref: HTMLButtonElement | null) => {
-        if (ref && !buttonRefs.includes(ref)) {
-            setButtonRefs((prevRefs) => [...prevRefs, ref]);
-        }
-    };
 
     const [buttonClicked, setButtonClicked] = useState(false);
     const [isDown, setIsDown] = useState(false);
-    const [shouldShrink, setShouldShrink] = useState(false);
     const [startX, setStartX] = useState(0);
     const [scrollLeft, setScrollLeft] = useState(0);
     const isDesktop = useMediaQuery({ query: "(min-width: 1000px)" });
 
     const onMouseDown = (e: any) => {
-        if (!isDesktop || !ref.current || buttonRefs.some((buttonRef) => buttonRef.contains(e.target))) return;
+        if (!isDesktop || !ref.current) return;
         setIsDown(true);
         setStartX(e.pageX - ref.current.offsetLeft);
         setScrollLeft(ref.current.scrollLeft);
-
-        setTimeout(() => {
-            setShouldShrink(!shouldShrink); // Toggle shouldShrink
-        }, 250);
     };
 
     const onMouseLeave = () => {
         setIsDown(false);
-        setShouldShrink(false);
     };
 
     const onMouseUp = () => {
         setIsDown(false);
-        setShouldShrink(false);
     };
 
     const onMouseMove = (e: any) => {
@@ -105,30 +92,33 @@ export default function Loja({ roupaFloar }: LojaProps) {
     }, []);
 
     return (
-        <m.div
-            variants={basicFade}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            className={"Main_Loja"}
-            key="Loja"
-            onMouseDown={onMouseDown}
-            onMouseLeave={onMouseLeave}
-            onMouseUp={onMouseUp}
-            onMouseMove={onMouseMove}
-            ref={ref}
-        >
-            {/* Map over roupaFloar and display each item */}
-            {roupaFloar.map((item) => (
-                <Product_Card
-                    setButtonRef={addButtonRef}
-                    setButtonClicked={setButtonClicked}
-                    item={item}
-                    isUserClicking={shouldShrink}
-                    key={item.sys.id}
-                />
-            ))}
-        </m.div>
+        <>
+            <Head>
+                <title>Atelier Floar | Loja</title>
+                <meta name="description" content="Todas as Peças Disponíveis | Moda Fluida e Atemporal" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+
+            <m.div
+                variants={basicFade}
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+                className={"Main_Loja"}
+                key="Loja"
+                onMouseDown={onMouseDown}
+                onMouseLeave={onMouseLeave}
+                onMouseUp={onMouseUp}
+                onMouseMove={onMouseMove}
+                ref={ref}
+            >
+                {/* Map over roupaFloar and display each item */}
+                {roupaFloar.map((item) => (
+                    <Product_Card item={item} key={item.sys.id} />
+                ))}
+            </m.div>
+        </>
     );
 }
 
