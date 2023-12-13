@@ -13,6 +13,7 @@ export default function Home() {
                 <title>Atelier Floar | Início</title>
                 <meta name="description" content="Moda Fluida e Atemporal" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <meta name="theme-color" content="#fff" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
