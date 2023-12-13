@@ -556,17 +556,20 @@ main {
 .Home_Welcome {
     font-family: "Santiago", sans-serif;
     font-weight: 800;
-    font-size: 2rem;
+    font-size: clamp(2rem, 3.4vw, 3.2rem);
     letter-spacing: 0.05rem;
     padding-inline: 1rem;
+    text-align: center;
 }
 
 .Home_Text {
+    margin-top: -1rem;
     font-family: "Santiago", sans-serif;
     font-weight: 800;
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
     letter-spacing: 0.05rem;
     padding-inline: 1rem;
+    text-align: center;
 }
 
 .Home_Choice_Container {
@@ -1130,7 +1133,7 @@ a {
     .Home_Welcome {
         text-align: center;
         padding-block: 0;
-        padding-inline: 2rem;
+        padding-inline: 0;
     }
 
     .Home_Text {

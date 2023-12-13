@@ -30,7 +30,7 @@ export default function Contato() {
                         parcerias!
                     </p>
                     <p className="Dark_Pill">atelierfloar@gmail.com</p>
-                    <p className="Dark_Pill">+55 48 999 999 999</p>
+                    <p className="Dark_Pill">+55 48 996 467 848</p>
                     <p className="Dark_Pill">Rua Laurindo Januário nº 2340 - Florianópolis</p>
                     <a className="Dark_Pill" href={`https://wa.me/${phoneNumber}`} target="_blank" rel="noreferrer">
                         Agende uma Visita!
