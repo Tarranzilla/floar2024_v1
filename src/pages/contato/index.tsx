@@ -3,6 +3,7 @@ import { basicFade } from "@/lib/animations";
 import Head from "next/head";
 
 const mapsAPIKey = process.env.GOOGLE_MAPS_API_KEY;
+const phoneNumber = "5541999977955";
 
 export default function Contato() {
     return (
@@ -18,7 +19,7 @@ export default function Contato() {
                     width="420"
                     height="420"
                     referrerPolicy="no-referrer-when-downgrade"
-                    src={`https://www.google.com/maps/embed/v1/place?key=${mapsAPIKey}&q=Florianopolis,Brasil&zoom=15`}
+                    src={`https://www.google.com/maps/embed/v1/place?key=${mapsAPIKey}&q=RuaLaurindoJanuario,2340,Florianopolis,Brasil&zoom=15`}
                     allowFullScreen
                 ></iframe>
 
@@ -30,7 +31,10 @@ export default function Contato() {
                     </p>
                     <p className="Dark_Pill">atelierfloar@gmail.com</p>
                     <p className="Dark_Pill">+55 48 999 999 999</p>
-                    <p className="Dark_Pill">Rua das Flores nº666 - Florianópolis</p>
+                    <p className="Dark_Pill">Rua Laurindo Januário nº 2340 - Florianópolis</p>
+                    <a className="Dark_Pill" href={`https://wa.me/${phoneNumber}`} target="_blank" rel="noreferrer">
+                        Agende uma Visita!
+                    </a>
                 </div>
             </m.div>
         </>

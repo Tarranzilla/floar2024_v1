@@ -13,7 +13,7 @@ export default function Sobre() {
             </Head>
             <m.div variants={basicFade} initial="hidden" animate="visible" exit="hidden" className="Main_Sobre" key="Sobre">
                 <Image
-                    src="/Joice/Joice_1.jpg"
+                    src="/Joice/Joice_3.jpg"
                     alt="Joice Fregapane, Designer e Artista"
                     width={420}
                     height={840}
