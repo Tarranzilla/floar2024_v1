@@ -15,9 +15,12 @@ export const uiSlice = createSlice({
         toggleElement: (state, action: PayloadAction<UiState["openElement"]>) => {
             state.openElement = state.openElement === action.payload ? null : action.payload;
         },
+        closeElement: (state) => {
+            state.openElement = null;
+        },
     },
 });
 
-export const { toggleElement } = uiSlice.actions;
+export const { toggleElement, closeElement } = uiSlice.actions;
 
 export default uiSlice.reducer;

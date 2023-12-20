@@ -37,6 +37,15 @@ const Product_Detail = ({ item }: { item: RoupaFloar }) => {
         dispatch(addToCart(item));
     };
 
+    const redirectToWhatsApp = () => {
+        const phoneNumber = "+5541999977955"; // Replace with the actual phone number
+        const message = `Olá Joice! Tenho interesse em comprar a peça: ${item.fields.name}`; // Replace with the actual message
+        const encodedMessage = encodeURIComponent(message);
+        const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+        window.open(url, "_blank");
+    };
+
     const quantity = useSelector((state: RootState) => selectCartItemQuantity(state, item));
 
     return (
@@ -79,7 +88,9 @@ const Product_Detail = ({ item }: { item: RoupaFloar }) => {
                         R$<span className="priceTag">{item.fields.price},00</span>
                     </m.h3>
                     <m.div variants={basicFade} initial="hidden" animate="visible" exit="hidden" className="Product_Card_Footer">
-                        <button className="Btn">Comprar Agora</button>
+                        <a className="Btn" onClick={redirectToWhatsApp} target="_blank" rel="noreferrer">
+                            Comprar Agora
+                        </a>
                         <button className="Btn" onClick={handleAddToCart}>
                             Adicionar ao Carrinho {quantity > 0 ? "(" + quantity + ")" : null}
                         </button>

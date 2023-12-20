@@ -13,6 +13,10 @@ import HistoryEduIcon from "@mui/icons-material/HistoryEdu";
 
 const phoneNumber = "5541999977955";
 
+const message = `Olá Joice! Tenho interesse em projetar uma encomenda especial com você!`;
+const encodedMessage = encodeURIComponent(message);
+const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
 export default function Home() {
     return (
         <>
@@ -35,7 +39,7 @@ export default function Home() {
                                 <strong>Encomende peças exclusivas e feitas sob medida diretamente com a Joice!</strong>
                             </p>
                             <p>Descreva a idéia básica da roupa que você imagina e criaremos conjuntamente uma peça única!</p>
-                            <Link className="Dark_Pill Home_Btn" href={`https://wa.me/${phoneNumber}`}>
+                            <Link className="Dark_Pill Home_Btn" href={url} target="_blank" rel="noreferrer">
                                 <ContentCutIcon className="Home_Btn_Icon" />
                                 Encomenda Especial
                             </Link>
@@ -57,6 +61,7 @@ export default function Home() {
                     </Link>{" "}
                 </div>
             </m.div>
+            <img className="Home_Bg_Image" src="/idv/fundos/fundo_floresta_3.jpg" alt="Fundo Floresta" />
         </>
     );
 }

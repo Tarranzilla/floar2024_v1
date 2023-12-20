@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { useSelector, useDispatch } from "react-redux";
-import { toggleElement } from "@/store/slices/uiSlice";
+import { toggleElement, closeElement } from "@/store/slices/uiSlice";
 import { RootState } from "@/store/store";
 
 import { useRouter } from "next/router";
@@ -39,6 +39,10 @@ export default function Main_Nav_Tools({ variant = "desktop" }: { variant?: "des
         dispatch(toggleElement("search"));
     };
 
+    const handleCloseElement = () => {
+        dispatch(closeElement());
+    };
+
     return (
         <ul className={"Main_Nav_Tools " + (variant === "desktop" ? "Desktop_Nav_Tools" : "Mobile_Nav_Tools")}>
             <li className="Menu_Btn_Container">
@@ -49,7 +53,12 @@ export default function Main_Nav_Tools({ variant = "desktop" }: { variant?: "des
             </li>
 
             <li className="Nav_Tool_Container">
-                <Link className={"Nav_Tool Menu_Btn Icon" + (isUserOpen ? " active " : "")} href="/usuario" title="Abrir a Aba de Usuário">
+                <Link
+                    className={"Nav_Tool Menu_Btn Icon" + (isUserOpen ? " active " : "")}
+                    href="/usuario"
+                    title="Abrir a Aba de Usuário"
+                    onClick={handleCloseElement}
+                >
                     <p className="Icon_Label Origin_Right">Usuário</p>
                     <AccountCircleIcon />
                 </Link>
@@ -81,7 +90,12 @@ export default function Main_Nav_Tools({ variant = "desktop" }: { variant?: "des
             </li>
 
             <li className="Nav_Tool_Container">
-                <Link className={"Nav_Tool Menu_Btn Icon" + (isStoreOpen ? " active " : "")} href="/loja" title="Abrir a Página da Loja">
+                <Link
+                    className={"Nav_Tool Menu_Btn Icon" + (isStoreOpen ? " active " : "")}
+                    href="/loja"
+                    title="Abrir a Página da Loja"
+                    onClick={handleCloseElement}
+                >
                     <p className="Icon_Label Origin_Right">Loja</p>
                     <StorefrontIcon />
                 </Link>

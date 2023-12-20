@@ -23,6 +23,7 @@ export default function Carrinho() {
     const cartTotal = useSelector((state: RootState) => state.cart.cart.total);
 
     const redirectToWhatsApp = () => {
+        if (cartItems.length === 0) return;
         const phoneNumber = "+5541999977955"; // Replace with the actual phone number
         const productLines = cartItems.map((item) => `${item.fields.name} - Quantidade: ${item.quantity}`).join("\n");
         const message = `Olá Joice! Tenho interesse em comprar:\n${productLines}\nSubtotal: ${cartTotal}`; // Replace with the actual message
@@ -50,12 +51,14 @@ export default function Carrinho() {
                                 <p>Que tal adicionar alguns itens da nossa Loja? 😊</p>
                             </div>
                         )}
-                        <ul className="Carrinho_List">
-                            {cartItems.map((item, index) => (
-                                <Product_Cart_Item key={index} item={item} />
-                            ))}
-                        </ul>
 
+                        {cartItems.length > 0 && (
+                            <ul className="Carrinho_List">
+                                {cartItems.map((item, index) => (
+                                    <Product_Cart_Item key={index} item={item} />
+                                ))}
+                            </ul>
+                        )}
                         <div className="Carrinho_Total_Price_Container">
                             <p>Valor Total:</p>
                             <h3>{cartTotal + ",00"}</h3>
@@ -64,6 +67,9 @@ export default function Carrinho() {
                         <button className="Btn" onClick={redirectToWhatsApp}>
                             Finalizar Pedido
                         </button>
+                        {cartItems.length === 0 && (
+                            <p className="Dark_Pill Checkout_Waring">Adicione algum item ao carrinho para poder finalizar o pedido!</p>
+                        )}
                     </div>
                 </m.div>
             )}

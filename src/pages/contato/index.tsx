@@ -5,6 +5,23 @@ import Head from "next/head";
 const mapsAPIKey = process.env.GOOGLE_MAPS_API_KEY;
 const phoneNumber = "5541999977955";
 
+const redirectToWhatsApp = () => {
+    const phoneNumber = "+5541999977955"; // Replace with the actual phone number
+    const message = `Olá Joice!`; // Replace with the actual message
+    const encodedMessage = encodeURIComponent(message);
+    const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+    window.open(url, "_blank");
+};
+
+const redirectToWhatsApp2 = () => {
+    const phoneNumber = "+5541999977955"; // Replace with the actual phone number
+    const message = `Olá Joice tudo bem? Eu gostaria de agendar uma visita!`; // Replace with the actual message
+    const encodedMessage = encodeURIComponent(message);
+    const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+    window.open(url, "_blank");
+};
 export default function Contato() {
     return (
         <>
@@ -30,11 +47,13 @@ export default function Contato() {
                         parcerias!
                     </p>
                     <p className="Dark_Pill">atelierfloar@gmail.com</p>
-                    <p className="Dark_Pill">+55 48 996 467 848</p>
-                    <p className="Dark_Pill">Rua Laurindo Januário nº 2340 - Florianópolis</p>
-                    <a className="Dark_Pill" href={`https://wa.me/${phoneNumber}`} target="_blank" rel="noreferrer">
-                        Agende uma Visita!
+                    <a className="Dark_Pill clickable" onClick={redirectToWhatsApp}>
+                        +55 48 996 467 848
                     </a>
+                    <p className="Dark_Pill">Rua Laurindo Januário nº 2340 - Florianópolis</p>
+                    <p className="Dark_Pill clickable" onClick={redirectToWhatsApp2}>
+                        Agende uma Visita!
+                    </p>
                 </div>
             </m.div>
         </>
