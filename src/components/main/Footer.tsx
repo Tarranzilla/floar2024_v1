@@ -9,7 +9,12 @@ const Footer = forwardRef((props, ref) => {
         <footer className="Footer" key="Footer">
             <Mobile_Nav_Tools variant="mobile" />
             <Footer_PrivacyAndTerms />
-            <p className="Footer_Brand">© 2024 Atelier Floar & Pragmata</p>
+            <p className="Footer_Brand">
+                © 2024 Atelier Floar &{" "}
+                <a href="https:/www.pragmata.ninja" target="_blank" rel="noreferrer">
+                    Pragmata
+                </a>
+            </p>
             <Footer_Social_Media />
         </footer>
     );

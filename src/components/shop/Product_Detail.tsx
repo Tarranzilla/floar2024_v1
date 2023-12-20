@@ -25,12 +25,6 @@ import Image from "next/image";
 */
 
 const Product_Detail = ({ item }: { item: RoupaFloar }) => {
-    const [imageFocus, setImageFocus] = useState(false);
-
-    const handleImageFocus = () => {
-        setImageFocus(!imageFocus);
-    };
-
     const dispatch = useDispatch();
 
     const handleAddToCart = () => {
@@ -60,7 +54,6 @@ const Product_Detail = ({ item }: { item: RoupaFloar }) => {
                                 alt={image.fields.description}
                                 width={1600}
                                 height={800}
-                                onClick={handleImageFocus}
                             />
                         );
                     })}
@@ -70,42 +63,33 @@ const Product_Detail = ({ item }: { item: RoupaFloar }) => {
                             alt={item.fields.images[0].fields.description}
                             width={1600}
                             height={800}
-                            onClick={handleImageFocus}
                         />
                     )}
                 </Image_ScrollGrab>
             </div>
 
-            {!imageFocus && (
-                <div className="Product_Detail_Information">
-                    <h2 className="Product_Card_Title Title">{item.fields.name}</h2>
-                    <div className="Product_Card_Content Content">
-                        <CTFL_RichText document={item.fields.description} />
-                    </div>
-                    <p className="Dark_Pill">Feita sob medida</p>
-
-                    <m.h3 variants={basicFade} initial="hidden" animate="visible" exit="hidden" className="Product_Card_Price">
-                        R$<span className="priceTag">{item.fields.price},00</span>
-                    </m.h3>
-                    <m.div variants={basicFade} initial="hidden" animate="visible" exit="hidden" className="Product_Card_Footer">
-                        <a className="Btn" onClick={redirectToWhatsApp} target="_blank" rel="noreferrer">
-                            Comprar Agora
-                        </a>
-                        <button className="Btn" onClick={handleAddToCart}>
-                            Adicionar ao Carrinho {quantity > 0 ? "(" + quantity + ")" : null}
-                        </button>
-                        <Link className="Btn" href={"/loja"}>
-                            Voltar para Loja
-                        </Link>
-                    </m.div>
+            <div className="Product_Detail_Information">
+                <h2 className="Product_Card_Title Title">{item.fields.name}</h2>
+                <div className="Product_Card_Content Content">
+                    <CTFL_RichText document={item.fields.description} />
                 </div>
-            )}
+                <p className="Dark_Pill">Feita sob medida</p>
 
-            {imageFocus && (
-                <button className="Btn Product_Card_Visibility_Btn" onClick={handleImageFocus}>
-                    {imageFocus ? <VisibilityOffIcon /> : <VisibilityIcon />}
-                </button>
-            )}
+                <m.h3 variants={basicFade} initial="hidden" animate="visible" exit="hidden" className="Dark_Pill">
+                    R$<span className="priceTag">{item.fields.price},00</span>
+                </m.h3>
+                <m.div variants={basicFade} initial="hidden" animate="visible" exit="hidden" className="Product_Card_Footer">
+                    <a className="Btn" onClick={redirectToWhatsApp} target="_blank" rel="noreferrer">
+                        Comprar Agora
+                    </a>
+                    <button className="Btn" onClick={handleAddToCart}>
+                        Adicionar ao Carrinho {quantity > 0 ? "(" + quantity + ")" : null}
+                    </button>
+                    <Link className="Btn" href={"/loja"}>
+                        Voltar para Loja
+                    </Link>
+                </m.div>
+            </div>
         </m.div>
     );
 };

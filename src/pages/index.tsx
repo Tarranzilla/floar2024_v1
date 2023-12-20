@@ -61,7 +61,7 @@ export default function Home() {
                     </Link>{" "}
                 </div>
             </m.div>
-            <img className="Home_Bg_Image" src="/idv/fundos/fundo_floresta_3.jpg" alt="Fundo Floresta" />
+            <Image width={1600} height={800} priority className="Home_Bg_Image" src="/idv/fundos/fundo_floresta_3.jpg" alt="Fundo Floresta" />
         </>
     );
 }
