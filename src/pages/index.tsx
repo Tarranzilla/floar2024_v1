@@ -25,7 +25,7 @@ export default function Home() {
                 <meta name="description" content="Moda Fluida e Atemporal" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta name="theme-color" content="#fff" />
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href="/idv/marca/pwa_icons/icon-128x128.png" />
             </Head>
 
             <m.div className="Main_Home" variants={basicFade} initial="hidden" animate="visible" exit="hidden">

@@ -87,8 +87,8 @@ Experiemntal Branch CSS
     --link-color: var(--text-color);
     --link-selected-color: var(--inverted-text-color);
 
-    --scrollbar-thumb-color: var(--primary-color-20);
-    --scrollbar-track-color: var(--primary-color-20);
+    --scrollbar-thumb-color: var(--primary-color-50);
+    --scrollbar-track-color: var(--primary-color-50);
 
     --small-font-size: 0.8rem;
     --medium-font-size: 1rem;
@@ -244,6 +244,14 @@ body {
     background-color: var(--white-bg-90);
     color: var(--text-color);
     border: 1px solid transparent;
+}
+
+.Menu_Link:focus-visible,
+.Menu_Link:hover {
+    transform: scale(1.05);
+    background-color: var(--primary-color-90);
+    color: var(--inverted-text-color);
+    border: var(--white-border);
 }
 
 .Carrinho {
@@ -437,6 +445,8 @@ body {
 .Search_Result {
     display: flex;
     gap: var(--medium-gap);
+    background-color: var(--black-bg-50);
+    border-radius: var(--medium-radius);
 }
 
 .Search_Result_Image {

@@ -9,6 +9,7 @@ import { RootState } from "@/store/store";
 
 import Product_Cart_Item from "./shop/Product_Cart_Item";
 import CancelIcon from "@mui/icons-material/Cancel";
+import InfoIcon from "@mui/icons-material/Info";
 
 export default function Carrinho() {
     const dispatch = useDispatch();
@@ -67,6 +68,7 @@ export default function Carrinho() {
                         <button className="Btn" onClick={redirectToWhatsApp}>
                             Finalizar Pedido
                         </button>
+
                         {cartItems.length === 0 && (
                             <p className="Dark_Pill Checkout_Waring">Adicione algum item ao carrinho para poder finalizar o pedido!</p>
                         )}
