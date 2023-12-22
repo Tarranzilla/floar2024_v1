@@ -13,9 +13,6 @@ import CloudDoneIcon from "@mui/icons-material/CloudDone";
 
 export default function Cookies() {
     const dispatch = useDispatch();
-    const { openElement } = useSelector((state: RootState) => state.userInterface);
-
-    const isCookieOpen = openElement === "cookie";
 
     const handleCookieToggle = () => {
         dispatch(toggleElement("cookie"));
@@ -23,23 +20,21 @@ export default function Cookies() {
 
     return (
         <>
-            {isCookieOpen && (
-                <m.div variants={basicFade} initial="hidden" animate="visible" exit="hidden" className="Menu Cookies" key="Cookies">
-                    <div className="Cookies_Container">
-                        <CookieIcon className="CookieIcon" />
-                        <p>Este site utiliza cookies para oferecer a melhor experiência possível. </p>
-                        <p>
-                            Ao continuar a navegação, você concorda com o uso de cookies. Para mais informações, consulte nossos{" "}
-                            <a href="#termosDeServico">Termos de Serviço</a> e <a href="#politicaDePrivacidade">Política de Privacidade</a>.
-                        </p>
-                    </div>
+            <m.div variants={basicFade} initial="hidden" animate="visible" exit="hidden" className="Menu Cookies" key="Cookies">
+                <div className="Cookies_Container">
+                    <CookieIcon className="CookieIcon" />
+                    <p>Este site utiliza cookies para oferecer a melhor experiência possível. </p>
+                    <p>
+                        Ao continuar a navegação, você concorda com o uso de cookies. Para mais informações, consulte nossos{" "}
+                        <a href="#termosDeServico">Termos de Serviço</a> e <a href="#politicaDePrivacidade">Política de Privacidade</a>.
+                    </p>
+                </div>
 
-                    <button className="Btn Cookies_Btn" onClick={handleCookieToggle}>
-                        Entendi
-                        <CloudDoneIcon className="CloudDoneIcon" />
-                    </button>
-                </m.div>
-            )}
+                <button className="Btn Cookies_Btn" onClick={handleCookieToggle}>
+                    Entendi
+                    <CloudDoneIcon className="CloudDoneIcon" />
+                </button>
+            </m.div>
         </>
     );
 }

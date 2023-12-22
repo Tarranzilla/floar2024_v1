@@ -13,8 +13,6 @@ import InfoIcon from "@mui/icons-material/Info";
 
 export default function Carrinho() {
     const dispatch = useDispatch();
-    const { openElement } = useSelector((state: RootState) => state.userInterface);
-    const isCartOpen = openElement === "cart";
 
     const handleCartToggle = () => {
         dispatch(toggleElement("cart"));
@@ -36,45 +34,43 @@ export default function Carrinho() {
 
     return (
         <>
-            {isCartOpen && (
-                <m.div variants={basicFade} initial="hidden" animate="visible" exit="hidden" className="Menu Carrinho" key="Carrinho">
-                    <div className="Carrinho_Layout">
-                        <div className="Carrinho_Header">
-                            <h2 className="Carrinho_Title">Carrinho</h2>
-                            <button className="Btn Round" onClick={handleCartToggle}>
-                                <CancelIcon />
-                            </button>
-                        </div>
-
-                        {cartItems.length === 0 && (
-                            <div className="Carrinho_Empty">
-                                <p>Seu carrinho está vazio no momento...</p>
-                                <p>Que tal adicionar alguns itens da nossa Loja? 😊</p>
-                            </div>
-                        )}
-
-                        {cartItems.length > 0 && (
-                            <ul className="Carrinho_List">
-                                {cartItems.map((item, index) => (
-                                    <Product_Cart_Item key={index} item={item} />
-                                ))}
-                            </ul>
-                        )}
-                        <div className="Carrinho_Total_Price_Container">
-                            <p>Valor Total:</p>
-                            <h3>{cartTotal + ",00"}</h3>
-                        </div>
-
-                        <button className="Btn" onClick={redirectToWhatsApp}>
-                            Finalizar Pedido
+            <m.div variants={basicFade} initial="hidden" animate="visible" exit="hidden" className="Menu Carrinho" key="Carrinho">
+                <div className="Carrinho_Layout">
+                    <div className="Carrinho_Header">
+                        <h2 className="Carrinho_Title">Carrinho</h2>
+                        <button className="Btn Round" onClick={handleCartToggle}>
+                            <CancelIcon />
                         </button>
-
-                        {cartItems.length === 0 && (
-                            <p className="Dark_Pill Checkout_Waring">Adicione algum item ao carrinho para poder finalizar o pedido!</p>
-                        )}
                     </div>
-                </m.div>
-            )}
+
+                    {cartItems.length === 0 && (
+                        <div className="Carrinho_Empty">
+                            <p>Seu carrinho está vazio no momento...</p>
+                            <p>Que tal adicionar alguns itens da nossa Loja? 😊</p>
+                        </div>
+                    )}
+
+                    {cartItems.length > 0 && (
+                        <ul className="Carrinho_List">
+                            {cartItems.map((item, index) => (
+                                <Product_Cart_Item key={index} item={item} />
+                            ))}
+                        </ul>
+                    )}
+                    <div className="Carrinho_Total_Price_Container">
+                        <p>Valor Total:</p>
+                        <h3>{cartTotal + ",00"}</h3>
+                    </div>
+
+                    <button className="Btn" onClick={redirectToWhatsApp}>
+                        Finalizar Pedido
+                    </button>
+
+                    {cartItems.length === 0 && (
+                        <p className="Dark_Pill Checkout_Waring">Adicione algum item ao carrinho para poder finalizar o pedido!</p>
+                    )}
+                </div>
+            </m.div>
         </>
     );
 }

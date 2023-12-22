@@ -670,6 +670,15 @@ main {
     padding: var(--large-gap);
 }
 
+.Home_Bg_Image_Wrapper {
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.Home_Bg_Image.loaded {
+    opacity: 0.5;
+}
+
 .Home_Bg_Image {
     position: absolute;
     top: 0;
@@ -680,6 +689,7 @@ main {
     z-index: -1;
     opacity: 0.5;
     border-radius: var(--medium-radius);
+    opacity: 0;
 }
 
 .Home_Content_Wrapper {

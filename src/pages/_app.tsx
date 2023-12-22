@@ -30,22 +30,51 @@ import Cookies from "@/components/Cookies";
 import Detalhe_Imagem from "@/components/Detalhe_Imagem";
 import Pesquisa from "@/components/Pesquisa";
 
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "@/store/store";
+
+import { motion as m } from "framer-motion";
+import { basicFade } from "@/lib/animations";
+
+function ConditionalComponents() {
+    const { openElement } = useSelector((state: RootState) => state.userInterface);
+    const isSearchOpen = openElement === "search";
+    const isCookieOpen = openElement === "cookie";
+    const isCartOpen = openElement === "cart";
+    const isMenuOpen = openElement === "menu";
+
+    return (
+        <>
+            <AnimatePresence mode="wait">
+                {isCookieOpen && <Cookies key={"Cookies_Master"} />}
+                {isSearchOpen && <Pesquisa key={"Pesquisa_Master"} />}
+                {isMenuOpen && <Menu key={"Menu_Master"} />}
+                {isCartOpen && <Carrinho key={"Carrinho_Master"} />}
+            </AnimatePresence>
+        </>
+    );
+}
+
 export default function App({ Component, pageProps, session }: MyAppProps) {
     const router = useRouter();
-
     return (
         <SessionProvider session={session}>
             <Provider store={store}>
                 <AnimatePresence mode="sync">
                     <Navbar key={"Navbar_Master"} />
-                    <main className="Content_Viewer" key="Main_Content_Viewer">
-                        <Cookies key={"Cookies_Master"} />
-                        <Pesquisa key={"Pesquisa_Master"} />
-                        <Menu key={"Menu_Master"} />
-                        <Detalhe_Imagem key={"Detalhe_Master"} />
-                        <Carrinho key={"Carrinho_Master"} />
-                        <Component {...pageProps} key={router.pathname} />
-                    </main>
+                    <m.main
+                        variants={basicFade}
+                        initial="hidden"
+                        animate="visible"
+                        exit="hidden"
+                        className="Content_Viewer"
+                        key="Main_Content_Viewer"
+                    >
+                        <ConditionalComponents />
+                        <AnimatePresence mode="wait">
+                            <Component {...pageProps} key={router.pathname} />
+                        </AnimatePresence>
+                    </m.main>
                     <Footer key={"Footer_Master"} />
                 </AnimatePresence>
             </Provider>

@@ -17,7 +17,11 @@ const message = `Olá Joice! Tenho interesse em projetar uma encomenda especial 
 const encodedMessage = encodeURIComponent(message);
 const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
+import { useState } from "react";
+
 export default function Home() {
+    const [bgIsLoaded, setBgIsLoaded] = useState(false);
+
     return (
         <>
             <Head>
@@ -61,7 +65,19 @@ export default function Home() {
                     </Link>{" "}
                 </div>
             </m.div>
-            <Image width={1600} height={800} priority className="Home_Bg_Image" src="/idv/fundos/fundo_floresta_3.jpg" alt="Fundo Floresta" />
+            <m.div className="Home_Bg_Image_Wrapper" variants={basicFade} initial="hidden" animate="visible" exit="hidden">
+                <Image
+                    onLoad={() => {
+                        setBgIsLoaded(true);
+                    }}
+                    width={1600}
+                    height={800}
+                    priority
+                    className={bgIsLoaded ? "Home_Bg_Image loaded" : "Home_Bg_Image"}
+                    src="/idv/fundos/fundo_floresta_3.jpg"
+                    alt="Fundo Floresta"
+                />
+            </m.div>
         </>
     );
 }
