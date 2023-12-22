@@ -77,13 +77,3 @@ export async function getStaticProps() {
         },
     };
 }
-
-/*
-
-                    <div className="Product_Card_Image_Container">
-                        {item.fields.images.map((image) => (
-                            <img src={image.fields.file.url} alt="" />
-                        ))}
-                    </div>
-
-*/

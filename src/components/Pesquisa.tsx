@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { motion as m } from "framer-motion";
 import { basicFade } from "@/lib/animations";
@@ -10,6 +10,10 @@ import { RootState } from "@/store/store";
 import SearchIcon from "@mui/icons-material/Search";
 import Image from "next/image";
 import Link from "next/link";
+
+import RoupaFloar from "@/types/RoupaFloar";
+import { SearchResult } from "@/store/slices/searchSlice";
+import { setProducts } from "@/store/slices/searchSlice";
 
 export default function Pesquisa() {
     const dispatch = useDispatch();
@@ -28,6 +32,36 @@ export default function Pesquisa() {
     };
 
     const filteredProducts = searchInput ? products.filter((product) => product.name.toLowerCase().includes(searchInput.toLowerCase())) : [];
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const response = await fetch("/api/products");
+                const data = await response.json();
+                const SearchProducts = [] as SearchResult[];
+
+                data.map((item: RoupaFloar) => {
+                    SearchProducts.push({
+                        id: item.sys.id,
+                        name: item.fields.name,
+                        intro: item.fields.intro,
+                        type: "product",
+                        class: item.fields.category,
+                        url: "/loja/produto/" + item.fields.slug,
+                        icon: item.fields.images[0].fields.file.url,
+                        results: [],
+                    });
+                });
+
+                // Dispatch the filtered products to the Redux store
+                dispatch(setProducts(SearchProducts));
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        };
+
+        fetchProducts();
+    }, []);
 
     return (
         <>

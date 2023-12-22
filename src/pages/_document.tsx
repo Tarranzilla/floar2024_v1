@@ -3,9 +3,10 @@ import Image from "next/image";
 
 export default function Document() {
     return (
-        <Html lang="en">
+        <Html lang="pt-BR">
             <Head>
                 <link rel="manifest" href="/manifest.webmanifest" />
+                <meta name="theme-color" content="#6b1212" />
                 {/* other head elements as needed */}
             </Head>
 

@@ -173,7 +173,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: var(--small-gap) var(--medium-gap);
-    border: var(--white-border);
+    border: 1px solid var(--black-bg-10);
     border-radius: var(--medium-radius);
     cursor: pointer;
     background-color: var(--black-bg-50);
@@ -194,7 +194,7 @@ body {
 .Btn:hover {
     background-color: var(--black-bg-80);
     transform: scale(1.05);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--white-bg-90);
 }
 
 .Origin_Left {
