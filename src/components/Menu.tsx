@@ -39,10 +39,15 @@ export default function Menu() {
                     <Link className="Menu_Link Btn" href="/blog" title="Ir para a Página do Blog" onClick={handleMenuToggle}>
                         Blog
                     </Link>
-                    <Link className="Menu_Link Btn" href="/blog" title="Ir para a Página de Políticas de Privacidade" onClick={handleMenuToggle}>
+                    <Link
+                        className="Menu_Link Btn"
+                        href="/politicas-de-privacidade"
+                        title="Ir para a Página de Políticas de Privacidade"
+                        onClick={handleMenuToggle}
+                    >
                         Políticas de Privacidade
                     </Link>
-                    <Link className="Menu_Link Btn" href="/blog" title="Ir para a Página de Termos de Uso" onClick={handleMenuToggle}>
+                    <Link className="Menu_Link Btn" href="/termos-de-uso" title="Ir para a Página de Termos de Uso" onClick={handleMenuToggle}>
                         Termos de Uso
                     </Link>
                 </div>
