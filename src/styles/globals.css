@@ -10,13 +10,37 @@ Experiemntal Branch CSS
 }
 
 :root {
-    --primary-color: #ffffffe0;
-    --secondary-color: #000000e0;
+    --primary-color: #6b1212;
+    --secondary-color: #245936;
     --background-color: #ffffffe0;
 
-    --text-color: #000000e0;
+    --text-color: var(--primary-color);
     --inverted-text-color: #ffffffe0;
     --border-color: #000000e0;
+
+    color: var(--text-color);
+
+    --black-border: 1px solid var(--text-color);
+
+    --primary-color-10: #6b12121a;
+    --primary-color-20: #6b121233;
+    --primary-color-30: #6b12124d;
+    --primary-color-40: #6b121266;
+    --primary-color-50: #6b121280;
+    --primary-color-60: #6b121299;
+    --primary-color-70: #6b1212b3;
+    --primary-color-80: #6b1212cc;
+    --primary-color-90: #6b1212e6;
+
+    --secondary-color-10: #2459361a;
+    --secondary-color-20: #24593633;
+    --secondary-color-30: #2459364d;
+    --secondary-color-40: #24593666;
+    --secondary-color-50: #24593680;
+    --secondary-color-60: #24593699;
+    --secondary-color-70: #245936b3;
+    --secondary-color-80: #245936cc;
+    --secondary-color-90: #245936e6;
 
     --black-bg-10: #0000001a;
     --black-bg-20: #00000033;
@@ -28,6 +52,8 @@ Experiemntal Branch CSS
     --black-bg-80: #000000cc;
     --black-bg-90: #000000e6;
 
+    --white-border: 1px solid #ffffffe0;
+
     --white-bg-10: #ffffff1a;
     --white-bg-20: #ffffff33;
     --white-bg-30: #ffffff4d;
@@ -37,21 +63,6 @@ Experiemntal Branch CSS
     --white-bg-70: #ffffffb3;
     --white-bg-80: #ffffffcc;
     --white-bg-90: #ffffffe6;
-
-    --button-text-color: #000000e0;
-    --button-bg-color: #ffffffe0;
-
-    --pill-text-color: #000000e0;
-
-    --card-bg-color: #ffffffe0;
-
-    --icon-color: #000000e0;
-
-    --link-color: #000000e0;
-    --link-selected-color: #ffffffe0;
-
-    --scrollbar-thumb-color: #000000e0;
-    --scrollbar-track-color: #000000e0;
 
     --small-gap: 0.5rem;
     --medium-gap: 1rem;
@@ -63,20 +74,38 @@ Experiemntal Branch CSS
     --large-radius: 2rem;
     --xlarge-radius: 4rem;
 
+    --button-text-color: var(--text-color);
+    --button-bg-color: var(--white-bg-90);
+    --button-padding: var(--small-gap) var(--medium-gap);
+
+    --pill-text-color: var(--text-color);
+
+    --card-bg-color: var(--white-bg-90);
+
+    --icon-color: var(--text-color);
+
+    --link-color: var(--text-color);
+    --link-selected-color: var(--inverted-text-color);
+
+    --scrollbar-thumb-color: var(--primary-color-20);
+    --scrollbar-track-color: var(--primary-color-20);
+
     --small-font-size: 0.8rem;
     --medium-font-size: 1rem;
     --large-font-size: 1.5rem;
     --xlarge-font-size: 2rem;
 
-    --small-font-weight: 400;
+    --xlight-font-weight: 100;
+    --light-font-weight: 300;
+    --regular-font-weight: 400;
     --medium-font-weight: 600;
-    --large-font-weight: 800;
+    --bold-font-weight: 800;
 
     --special-font: "Santiago", sans-serif;
     --special-font-weight: 800;
 
     --main-font: sans-serif;
-    --main-font-weight: 400;
+    --main-font-weight: var(--regular-font-weight);
 
     --default-transition: all 0.3s ease-in-out;
 }
@@ -128,8 +157,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--border-color);
+    padding: var(--small-gap) var(--medium-gap);
+    border: var(--black-border);
     border-radius: var(--medium-radius);
     backdrop-filter: blur(5px);
     font-size: var(--small-font-size);
@@ -143,17 +172,17 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--small-gap) 1rem;
-    border: 1px solid #fff;
-    border-radius: 1rem;
+    padding: var(--small-gap) var(--medium-gap);
+    border: var(--white-border);
+    border-radius: var(--medium-radius);
     cursor: pointer;
     background-color: var(--black-bg-50);
     backdrop-filter: blur(2px);
     color: var(--inverted-text-color);
-    font-size: 1rem;
+    font-size: var(--medium-font-size);
     text-align: center;
     transition: all 0.3s ease-in-out;
-    transform-origin: left;
+    transform-origin: center;
 }
 
 .Btn.Round {
@@ -163,10 +192,13 @@ body {
 
 .Btn:focus-visible,
 .Btn:hover {
-    background-color: var(--white-bg-90);
-    color: var(--text-color);
+    background-color: var(--black-bg-80);
     transform: scale(1.05);
     border: 1px solid var(--border-color);
+}
+
+.Origin_Left {
+    transform-origin: left center;
 }
 
 .Content_Viewer {
@@ -185,8 +217,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
-    padding: 1rem;
+    gap: var(--medium-gap);
+    padding: var(--medium-gap);
     z-index: 1000;
 }
 
@@ -199,7 +231,7 @@ body {
 .Menu_List {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: var(--medium-gap);
     margin-block: auto;
 }
 
@@ -209,6 +241,9 @@ body {
     letter-spacing: 0.125rem;
     font-family: "Santiago", sans-serif;
     transform-origin: center;
+    background-color: var(--white-bg-90);
+    color: var(--text-color);
+    border: 1px solid transparent;
 }
 
 .Carrinho {
@@ -220,13 +255,13 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    gap: 1rem;
+    gap: var(--medium-gap);
     height: 100%;
     width: 100%;
     max-width: 600px;
-    border-radius: 1rem;
+    border-radius: var(--medium-radius);
     background-color: var(--white-bg-80);
-    padding-block: 1rem;
+    padding-block: var(--medium-gap);
 }
 
 .Carrinho_Header {
@@ -234,9 +269,9 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: 1rem;
+    gap: var(--medium-gap);
     width: 100%;
-    padding-inline: 1rem;
+    padding-inline: var(--medium-gap);
 }
 
 .Carrinho_Title {
@@ -249,7 +284,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
+    padding: var(--medium-gap);
     text-align: center;
     flex: 1;
 }
@@ -258,8 +293,8 @@ body {
     display: flex;
     flex: 1;
     flex-direction: column;
-    gap: 1rem;
-    padding-inline: 1rem;
+    gap: var(--medium-gap);
+    padding-inline: var(--medium-gap);
     max-height: 80vh;
     width: 100%;
     overflow-y: auto;
@@ -268,10 +303,10 @@ body {
 .Carrinho_Item {
     list-style: none;
     display: flex;
-    gap: 1rem;
+    gap: var(--medium-gap);
     background-color: var(--white-bg-50);
-    border: 1px solid #fff;
-    border-radius: 1rem;
+    border: var(--white-border);
+    border-radius: var(--medium-radius);
 }
 
 .Carrinho_Item_Title {
@@ -291,7 +326,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 1rem;
+    border-radius: var(--medium-radius);
 }
 
 .Carrinho_Item_info {
@@ -299,9 +334,9 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    gap: 0.5rem;
-    padding-right: 0.5rem;
-    padding-block: 0.5rem;
+    gap: var(--small-gap);
+    padding-right: var(--small-gap);
+    padding-block: var(--small-gap);
     width: 100%;
     max-width: 400px;
 }
@@ -309,7 +344,7 @@ body {
 .Carrinho_Item_Quantity_Container {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: var(--small-gap);
 }
 
 .Carrinho_Item_Quantity_Value {
@@ -338,11 +373,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
+    gap: var(--small-gap);
 }
 
 .Checkout_Waring {
-    margin-inline: 1rem;
+    margin-inline: var(--medium-gap);
     text-align: center;
 }
 
@@ -354,21 +389,21 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    gap: var(--medium-gap);
 }
 
 .Search_Input_Container > input {
-    padding: 0.5rem;
-    border-radius: 1rem;
-    padding-inline: 1rem;
-    border: 1px solid #fff;
+    padding: var(--small-gap);
+    padding-inline: var(--medium-gap);
+    border-radius: var(--medium-radius);
+    border: var(--white-border);
 }
 
 .Search_Input_Container > button {
-    padding: 0.5rem;
-    border-radius: 1rem;
-    border: 1px solid #fff;
-    background-color: rgba(0, 0, 0, 0.3);
+    padding: var(--small-gap);
+    border-radius: var(--medium-radius);
+    border: var(--white-border);
+    background-color: var(--black-bg-30);
     backdrop-filter: blur(2px);
     color: var(--inverted-text-color);
     font-size: 1.5rem;
@@ -388,8 +423,8 @@ body {
 .Search_Results_List {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
+    gap: var(--medium-gap);
+    padding: var(--medium-gap);
     flex: 1;
     overflow-y: auto;
 }
@@ -401,13 +436,13 @@ body {
 
 .Search_Result {
     display: flex;
-    gap: 1rem;
+    gap: var(--medium-gap);
 }
 
 .Search_Result_Image {
     height: 100%;
     object-fit: cover;
-    border-radius: 0.5rem;
+    border-radius: var(--small-radius);
 }
 
 .Search_Result_Info {
@@ -415,9 +450,9 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    gap: 0.5rem;
-    padding-right: 0.5rem;
-    padding-block: 0.5rem;
+    gap: var(--small-gap);
+    padding-right: var(--small-gap);
+    padding-block: var(--small-gap);
     width: 100%;
     max-width: 400px;
     color: var(--inverted-text-color);
@@ -431,8 +466,8 @@ body {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding: 1rem;
-    gap: 1rem;
+    padding: var(--medium-gap);
+    gap: var(--medium-gap);
     background-color: var(--white-bg-50);
     backdrop-filter: blur(3px);
 }
@@ -443,6 +478,7 @@ body {
     align-items: center;
     font-family: "Santiago", sans-serif;
     transition: all 0.3s ease-in-out;
+    transform-origin: left;
 }
 
 .Nav_Logo:focus-visible,
@@ -456,17 +492,18 @@ body {
 }
 
 .Nav_Logo_Img {
+    margin: -0.25rem;
     margin-left: -1rem;
     transition: all 0.5s ease-in-out;
 }
 
 .Nav_Logo_Title {
-    font-size: 2rem;
+    font-size: var(--xlarge-font-size);
     font-weight: 800;
 }
 
 .Nav_Logo_Subtitle {
-    font-size: 1rem;
+    font-size: var(--medium-font-size);
     font-weight: 800;
 }
 
@@ -476,7 +513,7 @@ body {
     align-items: center;
     justify-content: center;
     list-style: none;
-    gap: 1rem;
+    gap: var(--medium-gap);
 }
 
 .Nav_Link {
@@ -499,7 +536,7 @@ body {
     transform-origin: left;
     transform: scaleX(0);
 
-    background-color: var(--black-bg-50);
+    background-color: var(--primary-color-50);
     transition: all 0.3s ease-in-out;
 }
 
@@ -535,7 +572,7 @@ body {
     align-items: center;
     justify-content: flex-end;
     list-style: none;
-    gap: 1rem;
+    gap: var(--medium-gap);
 }
 
 .Mobile_Nav_Tools {
@@ -545,7 +582,7 @@ body {
 .Nav_Tool {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: var(--small-gap);
     position: relative;
     transition: all 0.3s ease-in-out;
 }
@@ -578,7 +615,7 @@ main {
     display: flex;
     flex-direction: column;
     max-width: 640px;
-    gap: 1rem;
+    gap: var(--medium-gap);
 }
 
 .Cookies_Container {
@@ -601,26 +638,26 @@ main {
 }
 
 .Cookies_Btn {
-    gap: 0.5rem;
+    gap: var(--small-gap);
 }
 
 .privacidade {
     display: flex;
     flex-direction: column;
     max-width: 640px;
-    gap: 1rem;
+    gap: var(--medium-gap);
 }
 
 .Main_Home {
     position: relative;
     height: 100%;
     width: 100%;
-    overflow-y: auto;
+    overflow: hidden;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    padding: var(--large-gap);
 }
 
 .Home_Bg_Image {
@@ -632,14 +669,14 @@ main {
     object-fit: cover;
     z-index: -1;
     opacity: 0.5;
-    border-radius: 1rem;
+    border-radius: var(--medium-radius);
 }
 
 .Home_Content_Wrapper {
     display: flex;
     flex-direction: column;
     max-width: 760px;
-    gap: 1rem;
+    gap: var(--medium-gap);
     background-color: var(--white-bg-50);
     padding: var(--medium-gap);
     border-radius: var(--medium-gap);
@@ -651,7 +688,7 @@ main {
     font-weight: 800;
     font-size: clamp(2rem, 3.4vw, 3.2rem);
     letter-spacing: 0.05rem;
-    padding-inline: 1rem;
+    padding-inline: var(--medium-gap);
     text-align: center;
     color: var(--text-color);
 }
@@ -662,14 +699,14 @@ main {
     font-weight: 800;
     font-size: clamp(1rem, 1.5vw, 1.5rem);
     letter-spacing: 0.05rem;
-    padding-inline: 1rem;
+    padding-inline: var(--medium-gap);
     text-align: center;
 }
 
 .Home_Choice_Container {
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+    gap: var(--medium-gap);
 }
 
 .Home_Choice {
@@ -678,13 +715,12 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-    border-radius: 1rem;
-    border: 1px solid var(--border-color);
+    gap: var(--medium-gap);
+    padding: var(--medium-gap);
+    border-radius: var(--medium-radius);
+    border: var(--black-border);
     background-color: var(--white-bg-50);
     backdrop-filter: blur(5px);
-    cursor: pointer;
     transition: all 0.3s ease-in-out;
     max-width: 24rem;
 }
@@ -697,7 +733,7 @@ main {
 }
 
 .Home_Btn {
-    gap: 0.5rem;
+    gap: var(--small-gap);
     transition: all 0.3s ease-in-out;
     background-color: var(--white-bg-50);
 }
@@ -706,12 +742,14 @@ main {
 .Home_Sobre_Btn:hover,
 .Home_Btn:focus-within,
 .Home_Btn:hover {
-    transform: scale(1.05);
+    transform: scale(1.025);
+    background-color: var(--primary-color-90);
+    color: var(--inverted-text-color);
 }
 
 .Home_Sobre_Btn {
-    padding: 1rem;
-    gap: 0.5rem;
+    padding: var(--medium-gap);
+    gap: var(--small-gap);
     transition: all 0.3s ease-in-out;
     background-color: var(--white-bg-50);
 }
@@ -721,7 +759,7 @@ main {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: var(--medium-gap);
     width: 100%;
     height: 100%;
 }
@@ -732,7 +770,7 @@ main {
     justify-content: center;
     align-items: flex-start;
     overflow-y: auto;
-    gap: 1rem;
+    gap: var(--medium-gap);
     width: 100%;
     max-width: 420px;
     height: 100%;
@@ -744,7 +782,7 @@ main {
     width: 100%;
     max-width: 840px;
     height: 100%;
-    border-radius: 1rem;
+    border-radius: var(--medium-radius);
     border: 1px solid var(--border-color);
 }
 
@@ -753,7 +791,7 @@ main {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: var(--medium-gap);
     width: 100%;
     height: 100%;
     padding: 1rem;
@@ -765,7 +803,7 @@ main {
     justify-content: flex-start;
     align-items: flex-start;
     overflow-y: auto;
-    gap: 1rem;
+    gap: var(--medium-gap);
     width: 100%;
     height: 100%;
     padding: 1rem;
@@ -779,7 +817,7 @@ main {
     height: 100%;
     object-fit: cover;
     object-position: top;
-    border-radius: 1rem;
+    border-radius: var(--medium-radius);
 }
 
 .Main_Blog {
@@ -788,7 +826,7 @@ main {
     justify-content: center;
     align-items: center;
     text-align: center;
-    gap: 1rem;
+    gap: var(--medium-gap);
     width: 100%;
     max-width: 800px;
     padding: 1rem;
@@ -799,7 +837,7 @@ main {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: var(--medium-gap);
 }
 
 .Main_Blog > h2 {
@@ -821,7 +859,7 @@ main {
     justify-content: center;
     align-items: center;
     flex: 1;
-    gap: 1rem;
+    gap: var(--medium-gap);
 }
 
 .User_Tab {
@@ -829,7 +867,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: var(--medium-gap);
     width: 100%;
     max-width: 800px;
     padding: 1rem;
@@ -841,7 +879,7 @@ main {
     justify-content: center;
     width: 100%;
     height: 100%;
-    border-radius: 1rem;
+    border-radius: var(--medium-radius);
     overflow: hidden;
 }
 
@@ -850,7 +888,7 @@ main {
     flex-direction: column;
     justify-content: flex-start;
     width: 100%;
-    gap: 1rem;
+    gap: var(--medium-gap);
     scroll-behavior: unset;
     cursor: grab;
 
@@ -869,10 +907,10 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    gap: 1rem;
+    gap: var(--medium-gap);
     padding: 1rem;
-    border: 1px solid #000;
-    border-radius: 1rem;
+    border: var(--black-border);
+    border-radius: var(--medium-radius);
     transition: all 0.3s ease-in-out;
     scroll-behavior: smooth;
 }
@@ -901,11 +939,11 @@ main {
     align-items: center;
     justify-content: center;
     padding: 0.5rem 1rem;
-    border: 1px solid #fff;
-    border-radius: 1rem;
+    border: var(--white-border);
+    border-radius: var(--medium-radius);
     backdrop-filter: blur(5px);
     font-size: 0.8rem;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: var(--black-bg-30);
 }
 
 .priceTag {
@@ -940,7 +978,7 @@ main {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    border-radius: 1rem;
+    border-radius: var(--medium-radius);
     z-index: -1;
 }
 
@@ -950,7 +988,7 @@ main {
     top: 0;
     width: 100%;
     height: 50%;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+    background-image: linear-gradient(to bottom, var(--black-bg-90), transparent);
     z-index: 1;
 }
 
@@ -992,7 +1030,7 @@ main {
 .Product_Card_Footer {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--small-gap);
 }
 
 .Product_Detail {
@@ -1011,7 +1049,7 @@ main {
     flex-direction: row;
     min-height: 40vh;
     flex: 2;
-    gap: 1rem;
+    gap: var(--medium-gap);
     overflow-x: auto;
 }
 
@@ -1020,21 +1058,21 @@ main {
     flex-direction: column;
     align-items: flex-start;
     flex: 1;
-    gap: 0.5rem;
+    gap: var(--small-gap);
 }
 
 .Image_ScrollGrab > img {
     height: 100%;
     width: 100%;
     object-fit: cover;
-    border-radius: 1rem;
+    border-radius: var(--medium-radius);
 }
 
 .Image_ScrollGrab {
     display: flex;
     width: 100%;
     height: 100%;
-    gap: 1rem;
+    gap: var(--medium-gap);
     overflow-x: auto;
     padding-bottom: 0.5rem;
     cursor: grab;
@@ -1065,6 +1103,10 @@ a {
     margin: var(--medium-gap);
     transition: all 0.3s ease-in-out;
     animation: pulse 6s ease-in-out infinite alternate;
+    width: 800px;
+    height: 800px;
+    margin: -100px;
+    margin-right: -300px;
 }
 
 .Footer {
@@ -1081,14 +1123,14 @@ a {
     display: flex;
     flex: 1;
     align-items: center;
-    gap: 1rem;
+    gap: var(--medium-gap);
     margin-right: auto;
 }
 
 .Footer_Social_Media {
     display: flex;
     justify-content: flex-end;
-    gap: 1rem;
+    gap: var(--medium-gap);
     flex: 1;
 }
 
@@ -1103,7 +1145,7 @@ a {
 .Social_Media_Link {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: var(--small-gap);
     transition: all 0.3s ease-in-out;
 }
 
@@ -1115,8 +1157,8 @@ a {
     width: 0;
     max-width: max-content;
     white-space: nowrap;
-    border: 1px solid #000;
-    border-radius: 1rem;
+    border: var(--black-border);
+    border-radius: var(--medium-radius);
     transform: scaleX(0);
     transform-origin: left center;
     font-size: 1rem !important;
@@ -1149,7 +1191,7 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: var(--medium-gap);
 }
 
 #Shopping_Cart_Indicator {
@@ -1202,7 +1244,7 @@ a {
         flex-direction: column;
         width: 100%;
         height: 100%;
-        gap: 1rem;
+        gap: var(--medium-gap);
         overflow-y: auto;
         padding-bottom: 0.5rem;
     }
@@ -1225,10 +1267,14 @@ a {
 
     .Home_Content_Wrapper {
         align-items: center;
+        margin-bottom: var(--small-gap);
     }
 
     .Image_Home {
-        width: 20rem;
+        width: 30rem;
+        margin: 0;
+        margin-top: -5rem;
+        margin-bottom: -10rem;
     }
 
     .Home_Welcome {
@@ -1296,13 +1342,13 @@ a {
     }
 
     ::-webkit-scrollbar-track {
-        background-color: var(--black-bg-20);
-        border-radius: 1rem;
+        background-color: var(--scrollbar-track-color);
+        border-radius: var(--medium-radius);
     }
 
     ::-webkit-scrollbar-thumb {
-        background-color: var(--black-bg-20);
-        border-radius: 1rem;
+        background-color: var(--scrollbar-thumb-color);
+        border-radius: var(--medium-radius);
     }
 
     .Main_Loja {
@@ -1320,7 +1366,7 @@ a {
 
     .Product_Detail {
         flex-direction: row;
-        gap: 2rem;
+        gap: var(--large-gap);
     }
 
     .Product_Detail_Image_Container {
@@ -1329,7 +1375,7 @@ a {
         display: flex;
         flex-direction: row;
         min-height: 40vh;
-        gap: 1rem;
+        gap: var(--medium-gap);
         overflow-x: auto;
         border-radius: 0;
     }

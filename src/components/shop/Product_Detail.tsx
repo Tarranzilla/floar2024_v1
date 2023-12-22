@@ -79,13 +79,13 @@ const Product_Detail = ({ item }: { item: RoupaFloar }) => {
                     R$<span className="priceTag">{item.fields.price},00</span>
                 </m.h3>
                 <m.div variants={basicFade} initial="hidden" animate="visible" exit="hidden" className="Product_Card_Footer">
-                    <a className="Btn" onClick={redirectToWhatsApp} target="_blank" rel="noreferrer">
+                    <a className="Btn Origin_Left" onClick={redirectToWhatsApp} target="_blank" rel="noreferrer">
                         Comprar Agora
                     </a>
-                    <button className="Btn" onClick={handleAddToCart}>
+                    <button className="Btn Origin_Left" onClick={handleAddToCart}>
                         Adicionar ao Carrinho {quantity > 0 ? "(" + quantity + ")" : null}
                     </button>
-                    <Link className="Btn" href={"/loja"}>
+                    <Link className="Btn Origin_Left" href={"/loja"}>
                         Voltar para Loja
                     </Link>
                 </m.div>

@@ -29,7 +29,7 @@ export default function Home() {
             </Head>
 
             <m.div className="Main_Home" variants={basicFade} initial="hidden" animate="visible" exit="hidden">
-                <Image className="Image_Home" src="/idv/marca/Marca_Floar_Preto.png" alt="Floar Logo" width={420} height={420} priority />
+                <Image className="Image_Home" src="/idv/marca/Logo_Floar_Bordo.png" alt="Floar Logo" width={800} height={800} priority />
                 <div className="Home_Content_Wrapper">
                     <h2 className="Home_Welcome">Boas Vindas ao Atelier Floar!</h2>
                     <h3 className="Home_Text">Aqui produzimos Moda Autoral, Independente e Sustentável.</h3>
