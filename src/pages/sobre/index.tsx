@@ -21,7 +21,7 @@ export default function Sobre() {
                 />
 
                 <div className="Sobre_Text_Content">
-                    <h1 className="Main_Title">Sobre a Joice e seu Atelier</h1>
+                    <h1 className="Main_Title Sobre_Main_Title">Sobre a Joice e seu Atelier</h1>
                     <p className="Sobre_Paragrafo">Oi, eu sou a Joice!</p>
                     <p className="Sobre_Paragrafo">
                         Minha paixão por criar é o que me move desde sempre, e agora tenho o prazer de apresentar a você o Ateliê Floar!

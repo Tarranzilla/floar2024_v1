@@ -617,6 +617,7 @@ main {
 }
 
 .Main_Title {
+    font-size: clamp(2.4rem, 3.4vw, 3.2rem);
     font-family: "Santiago", sans-serif;
 }
 
@@ -626,6 +627,7 @@ main {
     flex-direction: column;
     max-width: 640px;
     gap: var(--medium-gap);
+    padding: var(--medium-gap);
 }
 
 .Cookies_Container {
@@ -836,7 +838,7 @@ main {
     width: 100%;
     height: 100%;
     padding: 1rem;
-    max-width: 840px;
+    max-width: 640px;
     text-align: start;
 }
 
@@ -1304,7 +1306,6 @@ a {
     }
 
     .Main_Home {
-        z-index: 10;
         position: relative;
         height: 100%;
         width: 100%;
@@ -1314,15 +1315,19 @@ a {
         align-items: center;
         justify-content: flex-start;
         overflow-x: hidden;
+        padding: var(--medium-gap);
     }
 
     .Home_Content_Wrapper {
         align-items: center;
         margin-bottom: var(--small-gap);
+        width: 100%;
+        max-width: 32rem;
     }
 
     .Image_Home {
         width: 30rem;
+        height: 30rem;
         margin: 0;
         margin-top: -5rem;
         margin-bottom: -10rem;
@@ -1330,17 +1335,23 @@ a {
 
     .Home_Welcome {
         text-align: center;
+        line-height: 2rem;
         padding-block: 0;
         padding-inline: 0;
     }
 
     .Home_Text {
         text-align: center;
+        line-height: 1.4rem;
     }
 
     .Home_Choice_Container {
         flex-direction: column;
         align-items: center;
+    }
+
+    .Home_Choice {
+        max-width: 30rem;
     }
 
     .Home_Sobre_Btn {
@@ -1358,6 +1369,20 @@ a {
     .Contato_Text_Content {
         max-width: 840px;
         justify-content: flex-start;
+    }
+
+    .Sobre_Main_Title {
+        text-align: center;
+    }
+
+    .Sobre_Image {
+        width: 100%;
+        max-width: 800px;
+        height: 100%;
+        max-height: 800px;
+        object-fit: cover;
+        object-position: top;
+        border-radius: var(--medium-radius);
     }
 
     .Sobre_Text_Content {
@@ -1408,7 +1433,7 @@ a {
     }
 
     .Product_Card {
-        min-width: 420px;
+        aspect-ratio: 3/5;
     }
 
     .Product_Card.active {
@@ -1444,7 +1469,11 @@ a {
 
 @media screen and (min-width: 2560px) {
     :root {
-        font-size: 1.5rem;
+        font-size: clamp(1.5rem, 1vw, 3rem);
+    }
+
+    .Home_Content_Wrapper {
+        max-width: 50rem;
     }
 
     .Google_Material_Icons {
@@ -1456,15 +1485,7 @@ a {
     }
 
     .Nav_Logo_Img {
-        height: 200px;
-        width: 160px;
-    }
-
-    .Product_Card {
-        min-width: 840px;
-    }
-
-    .Product_Card:hover {
-        min-width: 1680px;
+        height: clamp(100px, 150px, 200px);
+        width: clamp(80px, 120px, 160px);
     }
 }
