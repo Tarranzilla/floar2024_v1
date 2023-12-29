@@ -1,5 +1,6 @@
 import { motion as m } from "framer-motion";
 import { basicFade } from "@/lib/animations";
+import { useState } from "react";
 import Head from "next/head";
 
 const mapsAPIKey = process.env.GOOGLE_MAPS_API_KEY;
@@ -23,6 +24,12 @@ const redirectToWhatsApp2 = () => {
     window.open(url, "_blank");
 };
 export default function Contato() {
+    const [mapError, setMapError] = useState(false);
+
+    const handleMapError = () => {
+        setMapError(true);
+    };
+
     return (
         <>
             <Head>
@@ -31,14 +38,19 @@ export default function Contato() {
             </Head>
 
             <m.div variants={basicFade} initial="hidden" animate="visible" exit="hidden" className="Main_Contato" key="Contato">
-                <iframe
-                    className="Contato_Map"
-                    width="420"
-                    height="420"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    src={`https://www.google.com/maps/embed/v1/place?key=${mapsAPIKey}&q=RuaLaurindoJanuario,2340,Florianopolis,Brasil&zoom=15`}
-                    allowFullScreen
-                ></iframe>
+                {mapError ? (
+                    <div className="Contato_Map Error">Erro ao carregar o mapa 😢</div>
+                ) : (
+                    <iframe
+                        className="Contato_Map"
+                        width="420"
+                        height="420"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        src={`https://www.google.com/maps/embed/v1/place?key=${mapsAPIKey}&q=RuaLaurindoJanuario,2340,Florianopolis,Brasil&zoom=15`}
+                        allowFullScreen
+                        onError={handleMapError}
+                    ></iframe>
+                )}
 
                 <div className="Contato_Text_Content">
                     <h1 className="Main_Title">Fale com a Joice</h1>
@@ -46,12 +58,14 @@ export default function Contato() {
                         Sinta-se a vontade para entrar em contato, estou à disposição para atender a pedidos, sanar dúvidas e desenvolver novas
                         parcerias!
                     </p>
-                    <p className="Dark_Pill">atelierfloar@gmail.com</p>
-                    <a className="Dark_Pill clickable" onClick={redirectToWhatsApp}>
+                    <p className="Dark_Pill" title="Envie um e-mail">
+                        atelierfloar@gmail.com
+                    </p>
+                    <a className="Dark_Pill clickable" onClick={redirectToWhatsApp} title="Fale com a Joice diretamente pelo WhatsApp">
                         +55 48 996 467 848
                     </a>
                     <p className="Dark_Pill">Rua Laurindo Januário nº 2340 - Florianópolis</p>
-                    <p className="Dark_Pill clickable" onClick={redirectToWhatsApp2}>
+                    <p className="Dark_Pill clickable" onClick={redirectToWhatsApp2} title="Agende uma visita pelo WhatsApp">
                         Agende uma Visita!
                     </p>
                 </div>

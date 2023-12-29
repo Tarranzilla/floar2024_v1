@@ -670,6 +670,7 @@ main {
 }
 
 .Home_Bg_Image_Wrapper {
+    z-index: -1;
     opacity: 0;
     transition: all 0.3s ease-in-out;
 }
@@ -689,6 +690,7 @@ main {
     opacity: 0.5;
     border-radius: var(--medium-radius);
     opacity: 0;
+    transition: all 0.3s ease-in-out;
 }
 
 .Home_Content_Wrapper {
@@ -696,10 +698,17 @@ main {
     flex-direction: column;
     max-width: 760px;
     gap: var(--medium-gap);
-    background-color: var(--white-bg-50);
+    background-color: var(--white-bg-80);
     padding: var(--medium-gap);
     border-radius: var(--medium-gap);
-    backdrop-filter: blur(5px);
+
+    transition: none;
+
+    will-change: opacity;
+    transition: opacity 0.3s ease-in-out;
+
+    -webkit-backdrop-filter: blur(1px);
+    backdrop-filter: blur(1px);
 }
 
 .Home_Welcome {
@@ -1126,6 +1135,11 @@ a {
     height: 800px;
     margin: -100px;
     margin-right: -300px;
+    opacity: 0;
+}
+
+.Image_Home.loaded {
+    opacity: 1;
 }
 
 .Footer {
@@ -1273,6 +1287,7 @@ a {
     }
 
     .Main_Home {
+        z-index: 10;
         position: relative;
         height: 100%;
         width: 100%;

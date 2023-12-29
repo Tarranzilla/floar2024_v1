@@ -1,15 +1,11 @@
 import { motion as m } from "framer-motion";
 import { basicFade } from "@/lib/animations";
 
-import { useMediaQuery } from "react-responsive";
+import { useEffect } from "react";
 
-import { useState, useRef, useEffect, createRef } from "react";
-
-import Link from "next/link";
 import Head from "next/head";
 
 import { getEntriesByContentTypeAndPreviewMode } from "@/lib/contentful/contentful"; // Import the function
-import CTFL_Img_Loader from "@/components/contentful/CTFL_Img_Loader";
 
 import Product_Card from "@/components/shop/Product_Card";
 
@@ -29,20 +25,16 @@ export default function Loja({ roupaFloar }: LojaProps) {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const SearchProducts = [] as SearchResult[];
-
-        roupaFloar.map((item: RoupaFloar) => {
-            SearchProducts.push({
-                id: item.sys.id,
-                name: item.fields.name,
-                intro: item.fields.intro,
-                type: "product",
-                class: item.fields.category,
-                url: "/loja/produto/" + item.fields.slug,
-                icon: item.fields.images[0].fields.file.url,
-                results: [],
-            });
-        });
+        const SearchProducts: SearchResult[] = roupaFloar.map((item: RoupaFloar) => ({
+            id: item.sys.id,
+            name: item.fields.name,
+            intro: item.fields.intro,
+            type: "product",
+            class: item.fields.category,
+            url: "/loja/produto/" + item.fields.slug,
+            icon: item.fields.images[0].fields.file.url,
+            results: [],
+        }));
 
         dispatch(setProducts(SearchProducts));
     }, []);

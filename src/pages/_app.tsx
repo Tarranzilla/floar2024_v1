@@ -46,10 +46,10 @@ function ConditionalComponents() {
     return (
         <>
             <AnimatePresence mode="wait">
-                {isCookieOpen && <Cookies key={"Cookies_Master"} />}
-                {isSearchOpen && <Pesquisa key={"Pesquisa_Master"} />}
-                {isMenuOpen && <Menu key={"Menu_Master"} />}
-                {isCartOpen && <Carrinho key={"Carrinho_Master"} />}
+                {isCookieOpen && <Cookies key={"Cookies_Master_Key"} />}
+                {isSearchOpen && <Pesquisa key={"Pesquisa_Master_Key"} />}
+                {isMenuOpen && <Menu key={"Menu_Master_Key"} />}
+                {isCartOpen && <Carrinho key={"Carrinho_Master_Key"} />}
             </AnimatePresence>
         </>
     );
