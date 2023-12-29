@@ -173,10 +173,10 @@ body {
     align-items: center;
     justify-content: center;
     padding: var(--small-gap) var(--medium-gap);
-    border: 1px solid var(--black-bg-10);
+    border: 1px solid var(--primary-color-60);
     border-radius: var(--medium-radius);
     cursor: pointer;
-    background-color: var(--black-bg-50);
+    background-color: var(--primary-color-60);
     backdrop-filter: blur(2px);
     color: var(--inverted-text-color);
     font-size: var(--medium-font-size);
@@ -192,7 +192,7 @@ body {
 
 .Btn:focus-visible,
 .Btn:hover {
-    background-color: var(--black-bg-80);
+    background-color: var(--primary-color-90);
     transform: scale(1.05);
     border: 1px solid var(--white-bg-90);
 }
@@ -212,7 +212,7 @@ body {
     width: 100%;
     height: 100%;
     backdrop-filter: blur(20px);
-    background-color: var(--black-bg-10);
+    background-color: var(--black-bg-30);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -223,9 +223,10 @@ body {
 }
 
 .Menu_Title {
-    font-size: 3rem;
+    font-size: clamp(2.4rem, 3vw, 3rem);
     color: var(--inverted-text-color);
     font-family: "Santiago", sans-serif;
+    text-align: center;
 }
 
 .Menu_List {
@@ -461,8 +462,8 @@ body {
     justify-content: center;
     align-items: flex-start;
     gap: var(--small-gap);
-    padding-right: var(--small-gap);
-    padding-block: var(--small-gap);
+    padding-right: var(--medium-gap);
+    padding-block: var(--medium-gap);
     width: 100%;
     max-width: 400px;
     color: var(--inverted-text-color);
@@ -1243,13 +1244,29 @@ a {
     color: var(--text-color);
 }
 
+.Mobile_Only {
+    display: none;
+}
+
 @media screen and (max-width: 1000px) {
     .Desktop_Only {
         display: none;
     }
 
+    .Mobile_Only {
+        display: flex;
+    }
+
     .Navbar {
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: center;
+        padding: var(--small-gap);
+        padding-inline: var(--medium-gap);
+    }
+
+    .Nav_Logo_Img {
+        height: 50px;
+        width: 40px;
     }
 
     .Desktop_Nav_Tools {
@@ -1440,7 +1457,7 @@ a {
 
     .Nav_Logo_Img {
         height: 200px;
-        width: 200px;
+        width: 160px;
     }
 
     .Product_Card {

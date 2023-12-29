@@ -64,7 +64,7 @@ export default function Pesquisa() {
         <>
             <m.div variants={basicFade} initial="hidden" animate="visible" exit="hidden" className="Menu" id="Pesquisa" key="Pesquisa">
                 <div className="Search_Header">
-                    <h2 className="Menu_Title">Aba de Pesquisa</h2>
+                    <h2 className="Menu_Title Search_Title">Aba de Pesquisa</h2>
                 </div>
 
                 <div className="Search_Input_Container Pill">
@@ -92,7 +92,7 @@ export default function Pesquisa() {
                                 <div className="Search_Result_Info">
                                     <h3>{product.name}</h3>
                                     <p>{product.intro}</p>
-                                    <Link className="Pill" href={product.url}>
+                                    <Link className="Pill" href={product.url} title="Acessar a página de detalhes deste produto">
                                         Mais Detalhes
                                     </Link>
                                 </div>
