@@ -27,7 +27,7 @@ export default function Sobre() {
                         Minha paixão por criar é o que me move desde sempre, e agora tenho o prazer de apresentar a você o Ateliê Floar!
                     </p>
                     <p className="Sobre_Paragrafo">
-                        Viver em meio a uma natureza exuberate me inspira todos os dias a criar e vestir roupas mais leves e confortáveis, que são ao
+                        Viver em meio a uma natureza exuberante me inspira todos os dias a criar e vestir roupas mais leves e confortáveis, que são ao
                         mesmo tempo elegantes e versáteis, para que você se sinta livre em qualquer ocasião.
                     </p>
                     <p className="Sobre_Paragrafo">

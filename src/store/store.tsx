@@ -13,7 +13,6 @@ export const store = configureStore({
         themeAndEnv: themeAndEnvSlice,
         userInterface: uiSlice,
         search: searchSlice,
-        // your reducers will go here
     },
 });
 

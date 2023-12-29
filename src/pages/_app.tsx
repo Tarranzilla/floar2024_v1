@@ -1,6 +1,8 @@
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 
+import Head from "next/head";
+
 import { AnimatePresence } from "framer-motion";
 
 import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -58,26 +60,31 @@ function ConditionalComponents() {
 export default function App({ Component, pageProps, session }: MyAppProps) {
     const router = useRouter();
     return (
-        <SessionProvider session={session}>
-            <Provider store={store}>
-                <AnimatePresence mode="sync">
-                    <Navbar key={"Navbar_Master"} />
-                    <m.main
-                        variants={basicFade}
-                        initial="hidden"
-                        animate="visible"
-                        exit="hidden"
-                        className="Content_Viewer"
-                        key="Main_Content_Viewer"
-                    >
-                        <ConditionalComponents />
-                        <AnimatePresence mode="wait">
-                            <Component {...pageProps} key={router.pathname} />
-                        </AnimatePresence>
-                    </m.main>
-                    <Footer key={"Footer_Master"} />
-                </AnimatePresence>
-            </Provider>
-        </SessionProvider>
+        <>
+            <Head>
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+            </Head>
+            <SessionProvider session={session}>
+                <Provider store={store}>
+                    <AnimatePresence mode="sync">
+                        <Navbar key={"Navbar_Master"} />
+                        <m.main
+                            variants={basicFade}
+                            initial="hidden"
+                            animate="visible"
+                            exit="hidden"
+                            className="Content_Viewer"
+                            key="Main_Content_Viewer"
+                        >
+                            <ConditionalComponents />
+                            <AnimatePresence mode="wait">
+                                <Component {...pageProps} key={router.pathname} />
+                            </AnimatePresence>
+                        </m.main>
+                        <Footer key={"Footer_Master"} />
+                    </AnimatePresence>
+                </Provider>
+            </SessionProvider>
+        </>
     );
 }

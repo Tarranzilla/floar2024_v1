@@ -7,6 +7,8 @@ import { closeElement } from "@/store/slices/uiSlice";
 
 import UserTab from "@/components/user/UserTab";
 
+import Head from "next/head";
+
 export default function Usuario() {
     const dispatch = useDispatch();
 
@@ -15,9 +17,16 @@ export default function Usuario() {
     }, []);
 
     return (
-        <m.div variants={basicFade} initial="hidden" animate="visible" exit="hidden" className="Main_Usuario" key={"Usuario"}>
-            <h1 className="Main_Title">Perfil do Cliente</h1>
-            <UserTab />
-        </m.div>
+        <>
+            <Head>
+                <title>Atelier Floar | Cliente</title>
+                <meta name="description" content="Página do Cliente" />
+            </Head>
+
+            <m.div variants={basicFade} initial="hidden" animate="visible" exit="hidden" className="Main_Usuario" key={"Usuario"}>
+                <h1 className="Main_Title">Perfil do Cliente</h1>
+                <UserTab />
+            </m.div>
+        </>
     );
 }

@@ -44,7 +44,6 @@ export default function Loja({ roupaFloar }: LojaProps) {
             <Head>
                 <title>Atelier Floar | Loja</title>
                 <meta name="description" content="Todas as Peças Disponíveis | Moda Fluida e Atemporal" />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
